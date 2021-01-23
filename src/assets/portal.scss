@@ -1,0 +1,13 @@
+body {
+  font-size: 1rem;
+  margin: 0;
+}
+
+button {
+  outline: none !important; // Remove blue outline - Chrome bug
+}
+
+div {
+  outline: none !important; // Remove blue outline - Chrome bug
+}
+
