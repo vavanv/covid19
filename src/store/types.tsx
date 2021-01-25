@@ -1,21 +1,21 @@
-import { UserCultureState } from '../store/userCulture/types';
-import { UIState } from '../store/ui/types';
-import { StopsState } from '../store/stops/types';
-import { ShapesTrainsState } from '../store/shapes/types';
-import { RoutesState, RouteSelectedState } from '../store/routes/types';
-import { TrainTripsState } from '../store/train-trips/types';
+// import { UserCultureState } from '../store/userCulture/types';
+// import { UIState } from '../store/ui/types';
+// import { StopsState } from '../store/stops/types';
+// import { ShapesTrainsState } from '../store/shapes/types';
+// import { RoutesState, RouteSelectedState } from '../store/routes/types';
+// import { TrainTripsState } from '../store/train-trips/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Payload = any;
 
 export interface AppState {
-  userCulture: UserCultureState;
-  ui: UIState;
-  stopList: StopsState;
-  shapeTrainsList: ShapesTrainsState;
-  routeList: RoutesState;
-  routeSelected: RouteSelectedState;
-  trainTripsList: TrainTripsState;
+  // userCulture: UserCultureState;
+  // ui: UIState;
+  // stopList: StopsState;
+  // shapeTrainsList: ShapesTrainsState;
+  // routeList: RoutesState;
+  // routeSelected: RouteSelectedState;
+  // trainTripsList: TrainTripsState;
 }
 
 export interface AnyAction {

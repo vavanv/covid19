@@ -10,23 +10,20 @@ import Store from './store';
 import Theme from './theme';
 
 import Routes from './routes';
-import { IntlContainer } from '../../intl';
 
 const App = () => {
   return (
     <>
       <Provider store={Store}>
         <MuiThemeProvider theme={Theme}>
-          <IntlContainer>
-            <MuiPickersUtilsProvider utils={MomentUtils}>
-              {/* CssBaseline kickstart an elegant, consistent,
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            {/* CssBaseline kickstart an elegant, consistent,
               and simple baseline to build upon. */}
-              <CssBaseline />
-              <Router history={History}>
-                <Routes />
-              </Router>
-            </MuiPickersUtilsProvider>
-          </IntlContainer>
+            <CssBaseline />
+            <Router history={History}>
+              <Routes />
+            </Router>
+          </MuiPickersUtilsProvider>
         </MuiThemeProvider>
       </Provider>
     </>
