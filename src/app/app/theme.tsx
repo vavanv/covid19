@@ -11,8 +11,8 @@ export default createMuiTheme({
       paper: {
         minWidth: 300,
       },
-      paperAnchorDockedLeft: {
-        borderRight: 'none',
+      paperAnchorDockedRight: {
+        borderLeft: 'none',
       },
     },
   },

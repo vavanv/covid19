@@ -1,39 +1,14 @@
 import * as React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Drawer, Divider } from '@material-ui/core';
+import { Drawer, Divider, withStyles, WithStyles } from '@material-ui/core';
+import classnames from 'classnames';
 import { Map } from '../../../components';
-
-const drawerWidth = 340;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: 'auto',
-  },
-  content: {
-    flexGrow: 1,
-    // padding: theme.spacing(3),
-  },
-}));
-
-interface Props {
+import { styles } from './styles';
+interface Props extends WithStyles<typeof styles> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }
 
-const MainForm = (props: Props) => {
-  const classes = useStyles();
+const MainFormComponent = (props: Props) => {
+  const { classes } = props;
 
   return (
     <div className={classes.root}>
@@ -43,9 +18,7 @@ const MainForm = (props: Props) => {
       <Drawer
         className={classes.drawer}
         variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
+        classes={{ paper: classnames(classes.drawer) }}
         anchor="right"
       >
         <div className={classes.drawerContainer}>
@@ -56,4 +29,4 @@ const MainForm = (props: Props) => {
   );
 };
 
-export const MainFormComponent = MainForm;
+export default withStyles(styles)(MainFormComponent);

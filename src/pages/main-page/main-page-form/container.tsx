@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { MainFormComponent } from './component';
+import MainFormComponent from './component';
 
 // const mapStateToProps = {};
 // const mapDispatchToProps = {};
