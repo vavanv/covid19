@@ -14,6 +14,7 @@ export const styles = createStyles({
     overflow: 'auto',
   },
   drawer: {
+    opacity: 0.5,
     background: drawerBackGround,
     '& *': {
       color,

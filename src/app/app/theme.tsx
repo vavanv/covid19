@@ -9,7 +9,7 @@ export default createMuiTheme({
   overrides: {
     MuiDrawer: {
       paper: {
-        minWidth: 300,
+        minWidth: 450,
       },
       paperAnchorDockedRight: {
         borderLeft: 'none',

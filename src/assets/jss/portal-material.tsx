@@ -2,7 +2,8 @@ import { CSSProperties } from '@material-ui/styles';
 
 // Colors
 const activeColor = '#eceff1';
-const drawerBackGround = '#19212b';
+// const drawerBackGround = '#19212b';
+const drawerBackGround = '#eceff1';
 const dividerColor = '#404854';
 const headerBackground = '#262f3d';
 
