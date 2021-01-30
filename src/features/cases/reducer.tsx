@@ -1,22 +1,22 @@
 import * as R from 'ramda';
 
 import { AnyAction } from '../../store/types';
-import { CountriesCasesState } from '../../store/cases/types';
-import { FETCH_COUNTRIES_CASES } from './actions';
+import { CasesByCountryState } from '../../store/cases/types';
+import { FETCH_CASES_BY_COUNTRY } from './actions';
 
-export const initialState: CountriesCasesState = {
+export const initialState: CasesByCountryState = {
   items: [],
 };
 
-const reducer = (state = initialState, action: AnyAction): CountriesCasesState => {
+const reducer = (state = initialState, action: AnyAction): CasesByCountryState => {
   switch (action.type) {
-    case FETCH_COUNTRIES_CASES.SUCCESS:
+    case FETCH_CASES_BY_COUNTRY.SUCCESS:
       return R.assoc('items', action.payload, state);
-    case FETCH_COUNTRIES_CASES.FAILURE:
+    case FETCH_CASES_BY_COUNTRY.FAILURE:
       return initialState;
     default:
       return state;
   }
 };
 
-export { reducer as countriesCasesReducer };
+export { reducer as casesByCountryReducer };

@@ -1,10 +1,10 @@
-import { CountriesCasesState } from '../store/cases/types';
+import { CasesByCountryState } from '../store/cases/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Payload = any;
 
 export interface AppState {
-  countriesCases: CountriesCasesState;
+  casesByCountry: CasesByCountryState;
 }
 
 export interface AnyAction {

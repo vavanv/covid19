@@ -2,14 +2,14 @@ import { combineReducers } from 'redux';
 
 import { AppState } from '../store/types';
 import {
-  countriesCasesReducer,
-  initialState as initialCountriesCasesState,
+  casesByCountryReducer,
+  initialState as initialCasesByCountryState,
 } from '../features/cases/reducer';
 
 export const initialState: AppState = {
-  countriesCases: initialCountriesCasesState,
+  casesByCountry: initialCasesByCountryState,
 };
 
 export const rootReducer = combineReducers({
-  countriesCases: countriesCasesReducer,
+  casesByCountry: casesByCountryReducer,
 });

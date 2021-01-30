@@ -1,5 +1,3 @@
-import { InformationEvent } from 'http';
-
 export interface CountryCases {
   country: string;
   countryInfo: CountryInfo;
@@ -18,6 +16,6 @@ export interface Info {
 export type CountryInfo = Info;
 export type Cases = CountryCases[];
 
-export interface CountriesCasesState {
+export interface CasesByCountryState {
   items: Cases;
 }

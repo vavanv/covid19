@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 
 import { AppState } from '../../store/types';
-import { CountriesCasesState, Cases } from '../../store/cases/types';
+import { CasesByCountryState, Cases } from '../../store/cases/types';
 
-export const countriesCasesStateSelector = (state: AppState): CountriesCasesState =>
-  state.countriesCases;
+export const casesByCountryStateSelector = (state: AppState): CasesByCountryState =>
+  state.casesByCountry;
 
 export const getCountriesCases = createSelector(
-  countriesCasesStateSelector,
-  (cases: CountriesCasesState): Cases => cases.items,
+  casesByCountryStateSelector,
+  (cases: CasesByCountryState): Cases => cases.items,
 );
