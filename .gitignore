@@ -9,6 +9,8 @@ package-lock.json
 yarn.lock
 .DS_Store
 
+.eslintcache
+
 # config
 # .env
 # TypeScript verification file
