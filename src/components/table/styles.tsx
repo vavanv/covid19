@@ -5,21 +5,16 @@ export const styles = ({ palette }: Theme) => {
     table: {
       marginTop: '20px',
       marginLeft: '20px',
+      // marginRight: '20px',
       overflow: 'scroll',
       overflowX: 'hidden',
-      height: '800px',
-      // color: palette.primary.dark,
-      // backgroundColor: 'transparent',
-      '&:tr': {
+      height: '90%',
+      '& tr': {
         display: 'flex',
         justifyContent: 'space-between',
       },
-      '&:td': {
+      '& td': {
         padding: '0.5rem',
-        // color: palette.primary.dark,
-      },
-      '&:td:nth-of-type(odd)': {
-        backgroundColor: '#f3f3f8',
       },
     },
   });

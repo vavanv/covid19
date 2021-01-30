@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, Divider, withStyles, WithStyles } from '@material-ui/core';
+import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table } from '../../../components';
 import { CountryCases } from '../../../store/cases/types';
 import { styles } from './styles';
@@ -22,8 +22,24 @@ const MainFormComponent = (props: Props) => {
       <main className={classes.content}>
         <Map></Map>
       </main>
-      <Drawer variant="permanent" classes={{ paper: classes.drawer }} anchor="right">
+      <Drawer
+        variant="permanent"
+        classes={{ paper: classes.drawer }}
+        anchor="right"
+        PaperProps={{
+          style: {
+            overflowX: 'hidden',
+            marginTop: 0,
+            width: '200px',
+            paddingBottom: 0,
+            height: '100%',
+          },
+        }}
+      >
         <div className={classes.drawerContainer}>
+          <Typography variant="h6" className={classes.title}>
+            <div>Total Cases By Country</div>
+          </Typography>
           <Divider />
           <Table countries={countriesCases}></Table>
         </div>

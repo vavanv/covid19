@@ -19,7 +19,9 @@ const TableComponent = (props: Props & WithStyles<typeof styles>) => {
               <img alt="" src={countryInfo.flag} style={{ height: '26px', width: '38px' }} />
             </div>
           </td>
-          <td>{country}</td>
+          <td>
+            <strong>{country}</strong>
+          </td>
           <td>
             <strong>{numeral(cases).format('0,0')}</strong>
           </td>
