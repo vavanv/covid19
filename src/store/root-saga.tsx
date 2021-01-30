@@ -1,15 +1,7 @@
-import { all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
-// import { stopListItemWatcher } from '../features/stops/sagas';
-// import { shapeTrainsListItemsWatcher } from '../features/shapes-trains/sagas';
-// import { routeListItemWatcher } from '../features/routes/sagas';
-// import { trainTripsListItemWatcher } from '../features/train-trips/sagas';
+import { countriesCasesWatcher } from '../features/cases/sagas';
 
 export function* rootSaga() {
-  yield all([
-    // fork(stopListItemWatcher),
-    // fork(shapeTrainsListItemsWatcher),
-    // fork(routeListItemWatcher),
-    // fork(trainTripsListItemWatcher),
-  ]);
+  yield all([fork(countriesCasesWatcher)]);
 }

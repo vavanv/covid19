@@ -1,5 +1,4 @@
-export const API_BASE_URL = 'https://gogoapiv1.azurewebsites.net';
-// export const API_BASE_URL = 'http://localhost/GoGoApi';
+export const API_BASE_URL = 'https://disease.sh/v3/covid-19/';
 
 export interface TAppConfig {
   baseApiUrl: string;

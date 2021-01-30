@@ -1,8 +1,5 @@
 export const API_URLS = {
-  stops: 'api/cache/stop/list',
-  shapesTrains: 'api/shapes/trains/list',
-  routes: 'api/routes/dropdown',
-  tripTrains: 'api/service/trip/trains',
+  countries_cases: 'countries',
 };
 
 export const ERROR_TYPES = {
