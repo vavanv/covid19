@@ -5,15 +5,15 @@ import { CountryCases } from '../../../store/cases/types';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {
-  fetchCountriesCases: (params: any) => void;
-  countriesCases: CountryCases[];
+  fetchCasesByCountry: (params: any) => void;
+  casesByCountry: CountryCases[];
 }
 
 const MainFormComponent = (props: Props) => {
-  const { classes, countriesCases } = props;
+  const { classes, casesByCountry } = props;
 
   React.useEffect(() => {
-    props.fetchCountriesCases(null);
+    props.fetchCasesByCountry(null);
     // eslint-disable-next-line
   }, []);
 
@@ -41,7 +41,7 @@ const MainFormComponent = (props: Props) => {
             <div>Total Cases By Country</div>
           </Typography>
           <Divider />
-          <Table countries={countriesCases}></Table>
+          <Table cases={casesByCountry}></Table>
         </div>
       </Drawer>
     </div>

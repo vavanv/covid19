@@ -1,7 +1,7 @@
 export interface CountryCases {
   country: string;
   countryInfo: CountryInfo;
-  case: number;
+  cases: number;
   todayCases: number;
 }
 

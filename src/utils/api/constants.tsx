@@ -1,5 +1,5 @@
 export const API_URLS = {
-  countries_cases: 'countries',
+  cases_by_country: 'countries',
 };
 
 export const ERROR_TYPES = {

@@ -6,7 +6,7 @@ import { CasesByCountryState, Cases } from '../../store/cases/types';
 export const casesByCountryStateSelector = (state: AppState): CasesByCountryState =>
   state.casesByCountry;
 
-export const getCountriesCases = createSelector(
+export const getCasesByCountry = createSelector(
   casesByCountryStateSelector,
   (cases: CasesByCountryState): Cases => cases.items,
 );
