@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table } from '../../../components';
-import { CountryCases } from '../../../store/cases/types';
+import { CasesByCountry } from '../../../store/cases/types';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {
   fetchCasesByCountry: (params: any) => void;
-  casesByCountry: CountryCases[];
+  casesByCountry: CasesByCountry[];
 }
 
 const MainFormComponent = (props: Props) => {
@@ -18,7 +18,9 @@ const MainFormComponent = (props: Props) => {
     // eslint-disable-next-line
   }, []);
 
-  const sorter = R.descend(R.prop('cases'));
+  const casesByCountrySorted = (casesByCountry: CasesByCountry[]) => {
+    return R.sort(R.descend(R.prop('cases')), casesByCountry);
+  };
 
   return (
     <div className={classes.root}>
@@ -44,7 +46,7 @@ const MainFormComponent = (props: Props) => {
             <div>Total Cases By Country</div>
           </Typography>
           <Divider />
-          <Table cases={R.sort(sorter, casesByCountry)}></Table>
+          <Table cases={casesByCountrySorted(casesByCountry)}></Table>
         </div>
       </Drawer>
     </div>

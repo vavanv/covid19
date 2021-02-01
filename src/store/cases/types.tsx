@@ -1,4 +1,4 @@
-export interface CountryCases {
+export interface CasesByCountry {
   country: string;
   countryInfo: CountryInfo;
   cases: number;
@@ -14,7 +14,7 @@ export interface Info {
 }
 
 export type CountryInfo = Info;
-export type Cases = CountryCases[];
+export type Cases = CasesByCountry[];
 
 export interface CasesByCountryState {
   items: Cases;
