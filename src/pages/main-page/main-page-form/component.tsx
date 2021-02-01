@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table } from '../../../components';
 import { CountryCases } from '../../../store/cases/types';
@@ -16,6 +17,8 @@ const MainFormComponent = (props: Props) => {
     props.fetchCasesByCountry(null);
     // eslint-disable-next-line
   }, []);
+
+  const sorter = R.descend(R.prop('cases'));
 
   return (
     <div className={classes.root}>
@@ -41,7 +44,7 @@ const MainFormComponent = (props: Props) => {
             <div>Total Cases By Country</div>
           </Typography>
           <Divider />
-          <Table cases={casesByCountry}></Table>
+          <Table cases={R.sort(sorter, casesByCountry)}></Table>
         </div>
       </Drawer>
     </div>
