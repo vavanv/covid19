@@ -1,6 +1,6 @@
-import { createStyles, Theme } from '@material-ui/core';
+import { createStyles } from '@material-ui/core';
 
-export const styles = ({ palette }: Theme) => {
+export const styles = () => {
   return createStyles({
     table: {
       marginTop: '20px',
