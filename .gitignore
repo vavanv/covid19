@@ -9,9 +9,6 @@ package-lock.json
 yarn.lock
 .DS_Store
 
-# cache
-.eslintcache
-
 # config
 # .env
 # TypeScript verification file
@@ -71,3 +68,4 @@ src/**/*.css
 
 # Sitespeed reports
 sitespeed/output/*
+.eslintcache
