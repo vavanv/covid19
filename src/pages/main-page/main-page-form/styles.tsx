@@ -17,7 +17,7 @@ export const styles = ({ palette }: Theme) => {
       overflow: 'auto',
     },
     drawer: {
-      opacity: 0.5,
+      opacity: 0.7,
       background: drawerBackGround,
     },
   });
