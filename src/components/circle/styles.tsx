@@ -9,26 +9,11 @@ export const styles = ({ spacing, palette }: Theme) => {
       height: '80px',
       width: '100%',
       backgroundSize: 'cover',
-      '& image': {
-        width: '100px',
-      },
     },
     info_country_name: {
       fontSize: '20px',
       fontWeight: 'bold',
       color: palette.primary.dark,
-    },
-    info_confirmed: {
-      fontSize: '12px',
-      marginTop: spacing(0.3),
-    },
-    info_recovered: {
-      fontSize: '12px',
-      marginTop: spacing(0.3),
-    },
-    info_deaths: {
-      fontSize: '12px',
-      marginTop: spacing(0.3),
     },
   });
 };

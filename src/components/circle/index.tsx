@@ -46,13 +46,9 @@ const ShowDataByCountryComponent = (props: Props) => {
             style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
           />
           <div className={classes.info_country_name}>{country.country}</div>
-          <div className={classes.info_confirmed}>
-            Cases: {numeral(country.cases).format('0,0')}
-          </div>
-          <div className={classes.info_recovered}>
-            Recovered: {numeral(country.recovered).format('0,0')}
-          </div>
-          <div className={classes.info_deaths}>Deaths: {numeral(country.deaths).format('0,0')}</div>
+          <div>Cases: {numeral(country.cases).format('0,0')}</div>
+          <div>Recovered: {numeral(country.recovered).format('0,0')}</div>
+          <div>Deaths: {numeral(country.deaths).format('0,0')}</div>
         </div>
       </Popup>
     </Circle>
