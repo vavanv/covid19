@@ -11,6 +11,7 @@ const optionsByType = [
   { type: 'recovered', option: { multiplier: 35000, color: '#7dd71d', fillColor: '#7dd71d' } },
   { type: 'deaths', option: { multiplier: 200000, color: '#cc1034', fillColor: '#cc1034' } },
 ];
+
 interface Props extends WithStyles<typeof styles> {
   country: CasesByCountry;
   // casesType: string;
