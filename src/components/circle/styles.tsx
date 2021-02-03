@@ -9,6 +9,9 @@ export const styles = ({ spacing, palette }: Theme) => {
       height: '80px',
       width: '100%',
       backgroundSize: 'cover',
+      borderColor: palette.primary.dark,
+      borderStyle: 'solid ',
+      borderWidth: 'thin',
     },
     info_country_name: {
       fontSize: '20px',
