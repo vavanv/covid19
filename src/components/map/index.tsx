@@ -25,7 +25,8 @@ const MapComponent = (props: Props & WithStyles<typeof styles>) => {
       <LeafletMap minZoom={2.9}>
         <ChangeMap center={center} zoom={zoom} />
         <TileLayer
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
           // url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png"
           // url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
