@@ -1,2 +1,3 @@
-export { Map, RouteplotOverlay } from '../components/map';
-export { Table } from '../components/table';
+export { Map } from './map';
+export { Table } from './table';
+export { ShowDataByCountry } from './circle';

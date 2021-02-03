@@ -2,7 +2,8 @@ export interface CasesByCountry {
   country: string;
   countryInfo: CountryInfo;
   cases: number;
-  todayCases: number;
+  recovered: number;
+  deaths: number;
 }
 
 export interface Info {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
-import { Map, Table } from '../../../components';
+import { Map, Table, ShowDataByCountry } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
 import { styles } from './styles';
 
@@ -25,7 +25,11 @@ const MainFormComponent = (props: Props) => {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        <Map></Map>
+        <Map center={[0, 0]} zoom={2.9}>
+          {casesByCountry.map(country => (
+            <ShowDataByCountry country={country}></ShowDataByCountry>
+          ))}
+        </Map>
       </main>
       <Drawer
         variant="permanent"
