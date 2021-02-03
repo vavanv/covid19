@@ -4,24 +4,13 @@ import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
 import { CasesByCountry } from '../../store/cases/types';
-
 import { styles } from './styles';
 
-// const casesTypeColors = {
-//   cases: {
-//     multiplier: 200,
-//     option: { color: '#ffc107', fillColor: '#ffc107' },
-//   },
-//   recovered: {
-//     multiplier: 350,
-//     option: { color: '#7dd71d', fillColor: '#7dd71d' },
-//   },
-//   deaths: {
-//     multiplier: 1000,
-//     option: { color: '#cc1034', fillColor: '#cc1034' },
-//   },
-// };
-
+const optionsByType = [
+  { type: 'cases', option: { multiplier: 20000, color: '#ffc107', fillColor: '#ffc107' } },
+  { type: 'recovered', option: { multiplier: 35000, color: '#7dd71d', fillColor: '#7dd71d' } },
+  { type: 'deaths', option: { multiplier: 200000, color: '#cc1034', fillColor: '#cc1034' } },
+];
 interface Props extends WithStyles<typeof styles> {
   country: CasesByCountry;
   // casesType: string;
@@ -30,14 +19,16 @@ interface Props extends WithStyles<typeof styles> {
 const ShowDataByCountryComponent = (props: Props) => {
   // const { country, casesType } = props;
   const { classes, country } = props;
+  const selectByType = optionsByType.find(t => t.type === 'cases');
+  const options = selectByType?.option;
+  const multiplier = selectByType?.option.multiplier ?? 0;
+
   return (
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
-      // pathOptions={casesTypeColors[casesType].option}
-      // radius={Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier}
-      pathOptions={{ color: '#ffc107', fillColor: '#ffc107' }}
-      radius={Math.sqrt(country.cases * 20000)}
+      pathOptions={options}
+      radius={Math.sqrt(country.cases * multiplier)}
     >
       <Popup>
         <div className={classes.info_container}>
