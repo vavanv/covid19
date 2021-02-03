@@ -25,7 +25,11 @@ const MapComponent = (props: Props & WithStyles<typeof styles>) => {
       <LeafletMap minZoom={2.9}>
         <ChangeMap center={center} zoom={zoom} />
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // url="https://{s}.tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+
+          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+
           // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           // url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
           // url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png"
