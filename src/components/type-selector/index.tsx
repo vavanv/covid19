@@ -16,19 +16,19 @@ const TypeSelectorComponent = (props: Props & WithStyles<typeof styles>) => {
     <FormControl component="fieldset" className={classes.form}>
       <RadioGroup row aria-label="position" name="position" defaultValue={type}>
         <FormControlLabel
-          value="Cases"
+          value="cases"
           control={<CasesRadio />}
           label="Cases"
           labelPlacement="top"
         />
         <FormControlLabel
-          value="Recovered"
+          value="recovered"
           control={<RecoveredRadio />}
           label="Recovered"
           labelPlacement="top"
         />
         <FormControlLabel
-          value="Deaths"
+          value="deaths"
           control={<DeathsRadio />}
           label="Deaths"
           labelPlacement="top"

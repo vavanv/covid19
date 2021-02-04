@@ -3,6 +3,8 @@ import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table, ShowDataByCountry, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
+import { TypeOfOutput } from '../../../utils/common/constants';
+
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {
@@ -25,7 +27,7 @@ const MainFormComponent = (props: Props) => {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        <Map center={[0, 0]} zoom={2.5}>
+        <Map center={[0, 0]} zoom={2.9}>
           {casesByCountry.map(country => (
             <ShowDataByCountry country={country}></ShowDataByCountry>
           ))}
@@ -49,9 +51,12 @@ const MainFormComponent = (props: Props) => {
           <Typography variant="h6" className={classes.title}>
             <div>Total By Country</div>
           </Typography>
-          <TypeSelector type={'Recovered'} />
+          <TypeSelector type={TypeOfOutput.recovered} />
           <Divider />
-          <Table cases={casesByCountrySorted(casesByCountry)}></Table>
+          <Table
+            dataset={casesByCountrySorted(casesByCountry)}
+            type={TypeOfOutput.recovered}
+          ></Table>
         </div>
       </Drawer>
     </div>
