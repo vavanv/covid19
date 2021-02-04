@@ -51,12 +51,9 @@ const MainFormComponent = (props: Props) => {
           <Typography variant="h6" className={classes.title}>
             <div>Total By Country</div>
           </Typography>
-          <TypeSelector type={TypeOfOutput.recovered} />
+          <TypeSelector type={TypeOfOutput.cases} />
           <Divider />
-          <Table
-            dataset={casesByCountrySorted(casesByCountry)}
-            type={TypeOfOutput.recovered}
-          ></Table>
+          <Table dataset={casesByCountrySorted(casesByCountry)} type={TypeOfOutput.cases}></Table>
         </div>
       </Drawer>
     </div>

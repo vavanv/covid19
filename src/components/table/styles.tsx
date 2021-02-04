@@ -7,7 +7,7 @@ export const styles = ({ spacing }: Theme) => {
       marginLeft: '20px',
       overflow: 'scroll',
       overflowX: 'hidden',
-      height: '90%',
+      height: '85%',
       '& tr': {
         display: 'flex',
         justifyContent: 'space-between',
