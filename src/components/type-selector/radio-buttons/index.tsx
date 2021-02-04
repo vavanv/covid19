@@ -12,7 +12,7 @@ export const CasesRadio = withStyles({
     },
   },
   checked: {},
-})(props => <Radio color="default" {...props} size="small" />);
+})(props => <Radio {...props} size="small" />);
 
 export const RecoveredRadio = withStyles({
   root: {
@@ -22,7 +22,7 @@ export const RecoveredRadio = withStyles({
     },
   },
   checked: {},
-})(props => <Radio color="default" {...props} size="small" />);
+})(props => <Radio {...props} size="small" />);
 
 export const DeathsRadio = withStyles({
   root: {
@@ -32,4 +32,4 @@ export const DeathsRadio = withStyles({
     },
   },
   checked: {},
-})(props => <Radio color="default" {...props} size="small" />);
+})(props => <Radio {...props} size="small" />);

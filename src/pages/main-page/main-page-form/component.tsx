@@ -25,7 +25,7 @@ const MainFormComponent = (props: Props) => {
   return (
     <div className={classes.root}>
       <main className={classes.content}>
-        <Map center={[0, 0]} zoom={2.9}>
+        <Map center={[0, 0]} zoom={2.5}>
           {casesByCountry.map(country => (
             <ShowDataByCountry country={country}></ShowDataByCountry>
           ))}
