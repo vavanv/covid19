@@ -1,6 +1,6 @@
 import { createStyles, Theme } from '@material-ui/core';
 
-export const styles = ({ spacing, palette }: Theme) => {
+export const styles = ({ palette }: Theme) => {
   return createStyles({
     info_container: {
       width: '150px',

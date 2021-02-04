@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
-import { Map, Table, ShowDataByCountry } from '../../../components';
+import { Map, Table, ShowDataByCountry, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
 import { styles } from './styles';
 
@@ -47,8 +47,9 @@ const MainFormComponent = (props: Props) => {
       >
         <div className={classes.drawerContainer}>
           <Typography variant="h6" className={classes.title}>
-            <div>Total Cases By Country</div>
+            <div>Total By Country</div>
           </Typography>
+          <TypeSelector type={'Recovered'} />
           <Divider />
           <Table cases={casesByCountrySorted(casesByCountry)}></Table>
         </div>

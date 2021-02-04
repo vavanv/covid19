@@ -2,10 +2,13 @@ import { CSSProperties } from '@material-ui/styles';
 
 // Colors
 const activeColor = '#eceff1';
-// const drawerBackGround = '#19212b';
 const drawerBackGround = '#eceff1';
 const dividerColor = '#404854';
 const headerBackground = '#262f3d';
+
+const cases_color: string = '#ffc107';
+const recovered_color: string = '#7dd71d';
+const deaths_color: string = '#cc1034';
 
 // Container
 const conatinerFluid: CSSProperties = {
@@ -59,4 +62,7 @@ export {
   defaultLabelFont,
   dividerColor,
   headerBackground,
+  cases_color,
+  recovered_color,
+  deaths_color,
 };

@@ -3,13 +3,17 @@ import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
+import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
 import { CasesByCountry } from '../../store/cases/types';
 import { styles } from './styles';
 
 const optionsByType = [
-  { type: 'cases', option: { multiplier: 20000, color: '#ffc107', fillColor: '#ffc107' } },
-  { type: 'recovered', option: { multiplier: 35000, color: '#7dd71d', fillColor: '#7dd71d' } },
-  { type: 'deaths', option: { multiplier: 200000, color: '#cc1034', fillColor: '#cc1034' } },
+  { type: 'cases', option: { multiplier: 20000, color: cases_color, fillColor: cases_color } },
+  {
+    type: 'recovered',
+    option: { multiplier: 35000, color: recovered_color, fillColor: recovered_color },
+  },
+  { type: 'deaths', option: { multiplier: 200000, color: deaths_color, fillColor: deaths_color } },
 ];
 
 interface Props extends WithStyles<typeof styles> {
