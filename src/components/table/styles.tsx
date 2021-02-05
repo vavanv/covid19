@@ -5,16 +5,25 @@ export const styles = ({ spacing }: Theme) => {
     table: {
       marginTop: '20px',
       marginLeft: '20px',
+      marginRight: '10px',
       overflow: 'scroll',
       overflowX: 'hidden',
       height: '85%',
       '& tr': {
         display: 'flex',
-        justifyContent: 'space-between',
       },
       '& td': {
         padding: spacing(0.5),
       },
+    },
+    td_country: {
+      width: '100%',
+      align: 'left',
+    },
+    td_count: {
+      width: '120px',
+      align: 'right',
+      textAlign: 'right',
     },
   });
 };

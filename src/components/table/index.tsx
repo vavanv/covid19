@@ -32,7 +32,7 @@ const TableComponent = (props: Props & WithStyles<typeof styles>) => {
       {dataset.map((country: CasesByCountry) => (
         <tr>
           <td>
-            <div className="table__info-flag">
+            <div>
               <img
                 alt=""
                 src={country.countryInfo.flag}
@@ -40,10 +40,10 @@ const TableComponent = (props: Props & WithStyles<typeof styles>) => {
               />
             </div>
           </td>
-          <td>
+          <td className={classes.td_country}>
             <strong>{country.country}</strong>
           </td>
-          <td>
+          <td className={classes.td_count}>
             <strong>{renderCount(country, type)}</strong>
           </td>
         </tr>
