@@ -8,7 +8,7 @@ import { Radio } from '@material-ui/core/';
 // import { styles } from './styles';
 
 const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  var a = event.target.value;
+  // var a = event.target.value;
 };
 
 const useStyles = makeStyles((color: string) => ({
