@@ -19,4 +19,5 @@ export type Cases = CasesByCountry[];
 
 export interface CasesByCountryState {
   items: Cases;
+  selectedType: string;
 }
