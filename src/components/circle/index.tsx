@@ -4,36 +4,52 @@ import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
-import { CasesByCountry } from '../../store/cases/types';
+import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
-const optionsByType = [
-  { type: 'cases', option: { multiplier: 20000, color: cases_color, fillColor: cases_color } },
-  {
-    type: 'recovered',
-    option: { multiplier: 35000, color: recovered_color, fillColor: recovered_color },
-  },
-  { type: 'deaths', option: { multiplier: 200000, color: deaths_color, fillColor: deaths_color } },
-];
+const getOptionsByType = (type: string) => {
+  switch (type) {
+    case TypeOfOutput.cases:
+      return { multiplier: 35000, color: cases_color, fillColor: cases_color };
+    case TypeOfOutput.recovered:
+      return { multiplier: 35000, color: recovered_color, fillColor: recovered_color };
+    case TypeOfOutput.deaths:
+      return { multiplier: 300000, color: deaths_color, fillColor: deaths_color };
+    default:
+      return;
+  }
+};
 
 interface Props extends WithStyles<typeof styles> {
   country: CasesByCountry;
-  // casesType: string;
+  selectedType: string;
 }
 
 const ShowDataByCountryComponent = (props: Props) => {
-  // const { country, casesType } = props;
-  const { classes, country } = props;
-  const selectByType = optionsByType.find(t => t.type === 'cases');
-  const options = selectByType?.option;
-  const multiplier = selectByType?.option.multiplier ?? 0;
+  const { classes, country, selectedType } = props;
+  const options = getOptionsByType(selectedType);
+  const multiplier = options?.multiplier ?? 0;
+
+  const radius = (type: string, country: CasesByCountry, multiplier: number) => {
+    switch (type) {
+      case TypeOfOutput.cases:
+        return Math.sqrt(country.cases * multiplier);
+      case TypeOfOutput.recovered:
+        return Math.sqrt(country.recovered * multiplier);
+      case TypeOfOutput.deaths:
+        return Math.sqrt(country.deaths * multiplier);
+      default:
+        return 0;
+    }
+  };
 
   return (
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
       pathOptions={options}
-      radius={Math.sqrt(country.cases * multiplier)}
+      //radius={Math.sqrt(country.cases * multiplier)}
+      radius={radius(selectedType, country, multiplier)}
     >
       <Popup>
         <div className={classes.info_container}>

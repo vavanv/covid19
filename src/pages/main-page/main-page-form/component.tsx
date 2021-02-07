@@ -3,7 +3,6 @@ import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table, ShowDataByCountry, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
-import { TypeOfOutput } from '../../../store/cases/types';
 
 import { styles } from './styles';
 
@@ -30,7 +29,7 @@ const MainFormComponent = (props: Props) => {
       <main className={classes.content}>
         <Map center={[0, 0]} zoom={2.9}>
           {casesByCountry.map(country => (
-            <ShowDataByCountry country={country}></ShowDataByCountry>
+            <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
           ))}
         </Map>
       </main>
