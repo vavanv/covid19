@@ -10,6 +10,7 @@ export interface CasesByCountry {
   cases: number;
   recovered: number;
   deaths: number;
+  population: number;
 }
 
 export interface Info {

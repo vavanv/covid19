@@ -14,9 +14,22 @@ const getOptionsByType = (type: string) => {
     case TypeOfOutput.recovered:
       return { multiplier: 35000, color: recovered_color, fillColor: recovered_color };
     case TypeOfOutput.deaths:
-      return { multiplier: 300000, color: deaths_color, fillColor: deaths_color };
+      return { multiplier: 350000, color: deaths_color, fillColor: deaths_color };
     default:
       return;
+  }
+};
+
+const radius = (type: string, country: CasesByCountry, multiplier: number) => {
+  switch (type) {
+    case TypeOfOutput.cases:
+      return Math.sqrt(country.cases * multiplier);
+    case TypeOfOutput.recovered:
+      return Math.sqrt(country.recovered * multiplier);
+    case TypeOfOutput.deaths:
+      return Math.sqrt(country.deaths * multiplier);
+    default:
+      return 0;
   }
 };
 
@@ -29,19 +42,6 @@ const ShowDataByCountryComponent = (props: Props) => {
   const { classes, country, selectedType } = props;
   const options = getOptionsByType(selectedType);
   const multiplier = options?.multiplier ?? 0;
-
-  const radius = (type: string, country: CasesByCountry, multiplier: number) => {
-    switch (type) {
-      case TypeOfOutput.cases:
-        return Math.sqrt(country.cases * multiplier);
-      case TypeOfOutput.recovered:
-        return Math.sqrt(country.recovered * multiplier);
-      case TypeOfOutput.deaths:
-        return Math.sqrt(country.deaths * multiplier);
-      default:
-        return 0;
-    }
-  };
 
   return (
     <Circle
@@ -58,6 +58,7 @@ const ShowDataByCountryComponent = (props: Props) => {
             style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
           />
           <div className={classes.info_country_name}>{country.country}</div>
+          <div>Population: {numeral(country.population).format('0,0')}</div>
           <div>Cases: {numeral(country.cases).format('0,0')}</div>
           <div>Recovered: {numeral(country.recovered).format('0,0')}</div>
           <div>Deaths: {numeral(country.deaths).format('0,0')}</div>
