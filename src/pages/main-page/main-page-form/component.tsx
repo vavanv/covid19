@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
 import { Map, Table, ShowDataByCountry, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
-import { TypeOfOutput } from '../../../utils/common/constants';
+import { TypeOfOutput } from '../../../store/cases/types';
 
 import { styles } from './styles';
 

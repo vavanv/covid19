@@ -10,3 +10,8 @@ export const getCasesByCountry = createSelector(
   casesByCountryStateSelector,
   (cases: CasesByCountryState): Cases => cases.items,
 );
+
+export const getSelectedType = createSelector(
+  casesByCountryStateSelector,
+  (cases: CasesByCountryState): string => cases.selectedType,
+);

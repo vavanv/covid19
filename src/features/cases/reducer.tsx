@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { TypeOfOutput } from './/../../utils/common/constants';
+import { TypeOfOutput } from './../../store/cases/types';
 import { AnyAction } from '../../store/types';
 import { CasesByCountryState } from '../../store/cases/types';
 import { FETCH_CASES_BY_COUNTRY, CHANGE_TYPE_BY_COUNTRY } from './actions';

@@ -2,8 +2,7 @@ import * as React from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 
-import { CasesByCountry } from '../../store/cases/types';
-import { TypeOfOutput } from '../../utils/common/constants';
+import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {

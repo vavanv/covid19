@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FormControl, RadioGroup, FormControlLabel } from '@material-ui/core/';
 import { withStyles, WithStyles } from '@material-ui/core';
 
-import { TypeOfOutput } from '../../utils/common/constants';
+import { TypeOfOutput } from '../../store/cases/types';
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
 import { RadioButton } from './radio-buttons';
 import { styles } from './styles';

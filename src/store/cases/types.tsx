@@ -1,3 +1,9 @@
+export const TypeOfOutput = {
+  cases: 'cases',
+  recovered: 'recovered',
+  deaths: 'deaths',
+};
+
 export interface CasesByCountry {
   country: string;
   countryInfo: CountryInfo;
