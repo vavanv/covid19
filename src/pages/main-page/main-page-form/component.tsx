@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as R from 'ramda';
-import { Drawer, Divider, Typography, withStyles, WithStyles } from '@material-ui/core';
-import { Map, Table, ShowDataByCountry, TypeSelector } from '../../../components';
+import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
+import { Map, ShowDataByCountry, RightDrawer, Table, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
 
 import { styles } from './styles';
@@ -33,29 +33,14 @@ const MainFormComponent = (props: Props) => {
           ))}
         </Map>
       </main>
-      <Drawer
-        variant="permanent"
-        classes={{ paper: classes.drawer }}
-        anchor="right"
-        PaperProps={{
-          style: {
-            overflowX: 'hidden',
-            marginTop: 0,
-            width: '200px',
-            paddingBottom: 0,
-            height: '100%',
-          },
-        }}
-      >
-        <div className={classes.drawerContainer}>
-          <Typography variant="h6" className={classes.title}>
-            <div>Total By Country</div>
-          </Typography>
-          <TypeSelector type={selectedType} />
-          <Divider />
-          <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
-        </div>
-      </Drawer>
+      <RightDrawer>
+        <Typography variant="h6" className={classes.title}>
+          <div>Total By Country</div>
+        </Typography>
+        <TypeSelector type={selectedType} />
+        <Divider />
+        <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
+      </RightDrawer>
     </div>
   );
 };

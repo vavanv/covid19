@@ -1,7 +1,6 @@
-import { createStyles, Theme } from '@material-ui/core';
-import { drawerBackGround } from '../../../assets/jss/portal-material';
+import { createStyles } from '@material-ui/core';
 
-export const styles = ({ palette }: Theme) => {
+export const styles = () => {
   return createStyles({
     root: {
       display: 'flex',
@@ -12,13 +11,6 @@ export const styles = ({ palette }: Theme) => {
     },
     content: {
       flexGrow: 1,
-    },
-    drawerContainer: {
-      overflow: 'auto',
-    },
-    drawer: {
-      opacity: 0.7,
-      background: drawerBackGround,
     },
   });
 };
