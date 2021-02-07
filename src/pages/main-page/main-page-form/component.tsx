@@ -10,10 +10,11 @@ import { styles } from './styles';
 interface Props extends WithStyles<typeof styles> {
   fetchCasesByCountry: (params: any) => void;
   casesByCountry: CasesByCountry[];
+  selectedType: string;
 }
 
 const MainFormComponent = (props: Props) => {
-  const { classes, casesByCountry } = props;
+  const { classes, casesByCountry, selectedType } = props;
 
   React.useEffect(() => {
     props.fetchCasesByCountry(null);
@@ -21,7 +22,7 @@ const MainFormComponent = (props: Props) => {
   }, []);
 
   const casesByCountrySorted = (casesByCountry: CasesByCountry[]) => {
-    return R.sort(R.descend(R.prop('cases')), casesByCountry);
+    return R.sort(R.descend(R.prop(selectedType)), casesByCountry);
   };
 
   return (
@@ -51,9 +52,9 @@ const MainFormComponent = (props: Props) => {
           <Typography variant="h6" className={classes.title}>
             <div>Total By Country</div>
           </Typography>
-          <TypeSelector type={TypeOfOutput.cases} />
+          <TypeSelector type={selectedType} />
           <Divider />
-          <Table dataset={casesByCountrySorted(casesByCountry)} type={TypeOfOutput.cases}></Table>
+          <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
         </div>
       </Drawer>
     </div>
