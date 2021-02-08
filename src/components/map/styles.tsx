@@ -1,6 +1,6 @@
-import { createStyles, Theme } from '@material-ui/core';
+import { createStyles } from '@material-ui/core';
 
-export const styles = ({ spacing }: Theme) => {
+export const styles = () => {
   return createStyles({
     map: {
       width: '100vw',
