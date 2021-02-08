@@ -22,7 +22,7 @@ const MapComponent = (props: Props & WithStyles<typeof styles>) => {
 
   return (
     <div className={classes.map}>
-      <LeafletMap minZoom={zoom}>
+      <LeafletMap minZoom={zoom} zoomControl={false}>
         <ChangeMap center={center} zoom={zoom} />
         <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"></TileLayer>
         {children}

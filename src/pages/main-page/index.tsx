@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { MainFormContainer } from '../../pages/main-page/main-page-form/container';
+import { MainFormContainer } from './main-page-form/container';
 
 function MainPageComponent() {
   return <MainFormContainer />;

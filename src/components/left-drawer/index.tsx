@@ -7,19 +7,19 @@ interface Props extends WithStyles<typeof styles> {
   children?: React.ReactNode;
 }
 
-const RightDrawerComponent = (props: Props & WithStyles<typeof styles>) => {
+const LeftDrawerComponent = (props: Props & WithStyles<typeof styles>) => {
   const { children, classes } = props;
 
   return (
     <Drawer
       variant="permanent"
       classes={{ paper: classes.drawer }}
-      anchor="right"
+      anchor="left"
       PaperProps={{
         style: {
           overflowX: 'hidden',
           marginTop: 0,
-          minWidth: '400px',
+          width: '50px',
           paddingBottom: 0,
           height: '100%',
         },
@@ -30,4 +30,4 @@ const RightDrawerComponent = (props: Props & WithStyles<typeof styles>) => {
   );
 };
 
-export const RightDrawer = React.memo(withStyles(styles)(RightDrawerComponent));
+export const LeftDrawer = React.memo(withStyles(styles)(LeftDrawerComponent));

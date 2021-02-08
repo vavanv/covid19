@@ -4,7 +4,6 @@ import { AppState } from '../../../store/types';
 import { CasesByCountry } from '../../../store/cases/types';
 import { getCasesByCountry, getSelectedType } from '../../../features/cases/selectors';
 import { fetchCasesByCountryAction } from '../../../features/cases/actions';
-
 import MainFormComponent from './component';
 
 const mapStateToProps = createStructuredSelector<

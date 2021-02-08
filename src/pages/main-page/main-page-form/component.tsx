@@ -1,7 +1,14 @@
 import * as React from 'react';
 import * as R from 'ramda';
 import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
-import { Map, ShowDataByCountry, RightDrawer, Table, TypeSelector } from '../../../components';
+import {
+  Map,
+  ShowDataByCountry,
+  RightDrawer,
+  LeftDrawer,
+  Table,
+  TypeSelector,
+} from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
 
 import { styles } from './styles';
@@ -26,8 +33,11 @@ const MainFormComponent = (props: Props) => {
 
   return (
     <div className={classes.root}>
+      <LeftDrawer>
+        <Divider />
+      </LeftDrawer>
       <main className={classes.content}>
-        <Map center={[0, 0]} zoom={2.9}>
+        <Map center={[0, 50]} zoom={2.9}>
           {casesByCountry.map(country => (
             <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
           ))}
