@@ -1,6 +1,22 @@
 import * as React from 'react';
 import * as R from 'ramda';
-import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  Typography,
+  Divider,
+  Tooltip,
+  withStyles,
+  WithStyles,
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import {
+  Public as WorldIcon,
+  Colorize as SyringeIcon,
+  FormatColorFill as VaccineIcon,
+} from '@material-ui/icons';
+import { ROUTE_ROOT, VACCINATION, VACCINE_INFORMATION } from '../../../app/app/constants';
 import { Map, ShowDataByCountry, Drawer, Table, TypeSelector } from '../../../components';
 import { CasesByCountry } from '../../../store/cases/types';
 
@@ -11,8 +27,14 @@ interface Props extends WithStyles<typeof styles> {
   casesByCountry: CasesByCountry[];
   selectedType: string;
 }
+export interface MenuItem {
+  id: string;
+  icon: any;
+  route: string;
+  tooltip: string;
+}
 
-const MainFormComponent = (props: Props) => {
+function MainFormComponent(props: Props) {
   const { classes, casesByCountry, selectedType } = props;
 
   React.useEffect(() => {
@@ -24,10 +46,43 @@ const MainFormComponent = (props: Props) => {
     return R.sort(R.descend(R.prop(selectedType)), casesByCountry);
   };
 
+  const items: MenuItem[] = [
+    {
+      id: 'World',
+      icon: <WorldIcon />,
+      route: ROUTE_ROOT,
+      tooltip: 'Total cases by country',
+    },
+    {
+      id: 'Vaccination',
+      icon: <SyringeIcon />,
+      route: VACCINATION,
+      tooltip: 'Vaccination',
+    },
+    {
+      id: 'Vaccine Info',
+      icon: <VaccineIcon />,
+      route: VACCINE_INFORMATION,
+      tooltip: 'Vaccine information',
+    },
+  ];
+
+  const meneItems = items.map(({ id, icon, route, tooltip }) => {
+    return (
+      <Link to={route} key={id}>
+        <ListItem button key={id}>
+          <Tooltip title={tooltip} placement="right">
+            <ListItemIcon className={classes.itemIcon}>{icon}</ListItemIcon>
+          </Tooltip>
+        </ListItem>
+      </Link>
+    );
+  });
+
   return (
     <div className={classes.root}>
-      <Drawer minWidth={'50px'} anchor={'left'}>
-        <Divider />
+      <Drawer minWidth={'20px'} anchor={'left'}>
+        <List className={classes.list}>{meneItems}</List>
       </Drawer>
       <main className={classes.content}>
         <Map center={[0, 50]} zoom={2.9}>
@@ -36,7 +91,7 @@ const MainFormComponent = (props: Props) => {
           ))}
         </Map>
       </main>
-      <Drawer minWidth={'200px'} anchor={'right'}>
+      <Drawer minWidth={'180px'} anchor={'right'}>
         <Typography variant="h6" className={classes.title}>
           <div>Total By Country</div>
         </Typography>
@@ -46,6 +101,6 @@ const MainFormComponent = (props: Props) => {
       </Drawer>
     </div>
   );
-};
+}
 
 export default withStyles(styles)(MainFormComponent);

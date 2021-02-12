@@ -10,14 +10,14 @@ interface Props {
 }
 
 const DrawerComponent = (props: Props) => {
-  const { children, minWidth, anchor } = props;
+  const { children, minWidth, anchor, ...rest } = props;
 
   const style = useStyles({
     minWidth: minWidth,
   });
 
   return (
-    <MUDrawer variant="permanent" classes={{ paper: style.drawer }} anchor={anchor}>
+    <MUDrawer variant="permanent" classes={{ paper: style.drawer }} anchor={anchor} {...rest}>
       <div className={style.drawerContainer}>{children}</div>
     </MUDrawer>
   );
