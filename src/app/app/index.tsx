@@ -8,7 +8,6 @@ import { Router } from 'react-router-dom';
 import History from './history';
 import Store from './store';
 import Theme from './theme';
-
 import Routes from './routes';
 
 const App = () => {
