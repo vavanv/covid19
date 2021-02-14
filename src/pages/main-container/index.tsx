@@ -21,7 +21,7 @@ const MainContainerComponent = (props: Props) => {
           {mapChildren}
         </Map>
       </div>
-      <Drawer minWidth={'180px'} anchor={'right'}>
+      <Drawer minWidth={'400px'} anchor={'right'}>
         {drawerChildren}
       </Drawer>
     </div>
