@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as R from 'ramda';
 import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
 
-import { ShowDataByCountry, Table, TypeSelector } from '../../components';
-import { MainContainer } from '../main-container';
+import { ShowDataByCountry, Table, TypeSelector, Drawer, Map, LeftMenu } from '../../components';
+// import { MainContainer } from '../main-container';
 import { CasesByCountry } from '../../store/cases/types';
 import { styles } from './styles';
 
@@ -32,21 +32,41 @@ function TotalByCountryComponent(props: Props) {
   };
 
   return (
-    <MainContainer
-      mapChildren={casesByCountry.map(country => (
-        <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
-      ))}
-      drawerChildren={
-        <div>
-          <Typography variant="h6" className={classes.title}>
-            <div>Total By Country</div>
-          </Typography>
-          <TypeSelector type={selectedType} />
-          <Divider />
-          <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
-        </div>
-      }
-    ></MainContainer>
+    // <MainContainer
+    //   mapChildren={casesByCountry.map(country => (
+    //     <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
+    //   ))}
+    //   drawerChildren={
+    //     <div>
+    //       <Typography variant="h6" className={classes.title}>
+    //         <div>Total By Country</div>
+    //       </Typography>
+    //       <TypeSelector type={selectedType} />
+    //       <Divider />
+    //       <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
+    //     </div>
+    //   }
+    // ></MainContainer>
+    <div className={classes.root}>
+      <Drawer minWidth={'20px'} anchor={'left'}>
+        <LeftMenu />
+      </Drawer>
+      <main className={classes.content}>
+        <Map center={[0, 50]} zoom={2.9}>
+          {casesByCountry.map(country => (
+            <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
+          ))}
+        </Map>
+      </main>
+      <Drawer minWidth={'180px'} anchor={'right'}>
+        <Typography variant="h6" className={classes.title}>
+          <div>Total By Country</div>
+        </Typography>
+        <TypeSelector type={selectedType} />
+        <Divider />
+        <Table dataset={casesByCountrySorted(casesByCountry)} type={selectedType}></Table>
+      </Drawer>
+    </div>
   );
 }
 

@@ -68,36 +68,20 @@ function DetailByCountryComponent(props: Props) {
           value={country.countryInfo.iso3}
           className={classes.input}
         >
-          {/* <div className={classes.table}>
-            <tr>
-              <td>
-                <div>
-                  <img
-                    alt=""
-                    src={country.countryInfo.flag}
-                    style={{ height: '26px', width: '38px' }}
-                  />
-                </div>
-              </td>
-              <td className={classes.td_country}>
-                <strong>{country.country}</strong>
-              </td>
-            </tr>
-          </div> */}
           <div>
-            <img alt="" src={country.countryInfo.flag} style={{ height: '16px', width: '28px' }} />{' '}
+            <img
+              alt=""
+              src={country.countryInfo.flag}
+              style={{
+                height: '16px',
+                width: '28px',
+                borderBlockColor: 'black',
+                borderStyle: 'solid',
+                borderWidth: 'thin',
+              }}
+            />{' '}
             {country.country}
           </div>
-          {/* <div>
-            {'  '}
-            {country.country}
-          </div> */}
-          {/* <GridContainer>
-            <GridItem>
-              <img alt="" src={country.countryInfo.flag} style={{ height: '16px', width: '28px' }} />
-            </GridItem>
-            <GridItem>{country.country}</GridItem>
-          </GridContainer> */}
         </MenuItem>
       );
     }),
