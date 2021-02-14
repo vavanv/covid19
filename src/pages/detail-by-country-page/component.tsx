@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
+import { GridContainer, GridItem } from '../../components';
 import { MainContainer } from '../main-container';
-import { GridItem, GridContainer } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { styles } from './styles';
 
