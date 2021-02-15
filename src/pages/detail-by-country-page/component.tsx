@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { GridContainer, GridItem, Drawer, LeftMenu, Map } from '../../components';
+import { Drawer, LeftMenu, Map } from '../../components';
 // import { MainContainer } from '../main-container';
 import { CasesByCountry } from '../../store/cases/types';
 import { styles } from './styles';
@@ -93,13 +93,14 @@ function DetailByCountryComponent(props: Props) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
+    setCountry(event.target.value);
+
     if (event.target.value === '0') {
       setMapCenter({ lat: 0, lng: 50 });
       setMapZoom(3);
       return;
     }
 
-    setCountry(event.target.value);
     var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
     setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
     setMapZoom(5);
@@ -124,34 +125,26 @@ function DetailByCountryComponent(props: Props) {
           <div>Details By Country</div>
         </Typography>
         <Divider />
-        <GridContainer className={classes.form}>
-          <GridItem>
-            <br />
-            <GridContainer>
-              <GridItem>
-                <FormControl fullWidth={true}>
-                  <TextField
-                    InputProps={{
-                      classes: {
-                        input: inputClasses,
-                        root: marginTop,
-                      },
-                    }}
-                    InputLabelProps={{
-                      className: classes.labelRoot,
-                    }}
-                    select={true}
-                    value={country}
-                    className={classes.margin}
-                    onChange={handleChange}
-                  >
-                    {selectElements}
-                  </TextField>
-                </FormControl>
-              </GridItem>
-            </GridContainer>
-          </GridItem>
-        </GridContainer>
+        <br />
+        <FormControl fullWidth={true}>
+          <TextField
+            InputProps={{
+              classes: {
+                input: inputClasses,
+                root: marginTop,
+              },
+            }}
+            InputLabelProps={{
+              className: classes.labelRoot,
+            }}
+            select={true}
+            value={country}
+            className={classes.margin}
+            onChange={handleChange}
+          >
+            {selectElements}
+          </TextField>
+        </FormControl>
       </Drawer>
     </div>
     // <MainContainer
