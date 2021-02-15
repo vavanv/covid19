@@ -93,9 +93,16 @@ function DetailByCountryComponent(props: Props) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
+    if (event.target.value === '0') {
+      setMapCenter({ lat: 0, lng: 50 });
+      setMapZoom(3);
+      return;
+    }
+
     setCountry(event.target.value);
     var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
     setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
+    setMapZoom(5);
     // const selectedRoute: Route = routeList.filter(r => r.shapeId === event.target.value)[0];
     // dispatch(selectRoute(selectedRoute));
   };
