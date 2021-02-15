@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { GridContainer, GridItem } from '../../components';
-import { MainContainer } from '../main-container';
+import { GridContainer, GridItem, Drawer, LeftMenu, Map } from '../../components';
+// import { MainContainer } from '../main-container';
 import { CasesByCountry } from '../../store/cases/types';
 import { styles } from './styles';
 
@@ -30,6 +30,10 @@ interface Props extends WithStyles<typeof styles> {
 
 function DetailByCountryComponent(props: Props) {
   const { classes, value, casesByCountry } = props;
+
+  const [country, setCountry] = React.useState('0');
+  const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });
+  const [mapZoom, setMapZoom] = React.useState(3);
 
   const marginTop = classNames({
     [classes.marginTop]: false,
@@ -89,55 +93,103 @@ function DetailByCountryComponent(props: Props) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
-    // setRoute(event.target.value);
+    setCountry(event.target.value);
+    var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
+    setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
     // const selectedRoute: Route = routeList.filter(r => r.shapeId === event.target.value)[0];
     // dispatch(selectRoute(selectedRoute));
   };
 
   return (
-    <MainContainer
-      mapChildren={null}
-      // mapChildren={casesByCountry.map(country => (
-      //   // <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
-      // ))}
-      drawerChildren={
-        <div>
-          <Typography variant="h6" className={classes.title}>
-            <div>Details By Country</div>
-          </Typography>
-          <Divider />
-          <GridContainer className={classes.form}>
-            <GridItem>
-              <br />
-              <GridContainer>
-                <GridItem>
-                  <FormControl fullWidth={true}>
-                    <TextField
-                      InputProps={{
-                        classes: {
-                          input: inputClasses,
-                          root: marginTop,
-                        },
-                      }}
-                      InputLabelProps={{
-                        className: classes.labelRoot,
-                      }}
-                      select={true}
-                      // value={route}
-                      // label={'Select Country'}
-                      className={classes.margin}
-                      onChange={handleChange}
-                    >
-                      {selectElements}
-                    </TextField>
-                  </FormControl>
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-        </div>
-      }
-    ></MainContainer>
+    <div className={classes.root}>
+      <Drawer minWidth={'20px'} anchor={'left'}>
+        <LeftMenu />
+      </Drawer>
+      <main className={classes.content}>
+        <Map center={mapCenter} zoom={mapZoom}>
+          {/* {casesByCountry.map(country => (
+            <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
+          ))} */}
+        </Map>
+      </main>
+      <Drawer minWidth={'400px'} anchor={'right'}>
+        <Typography variant="h6" className={classes.title}>
+          <div>Details By Country</div>
+        </Typography>
+        <Divider />
+        <GridContainer className={classes.form}>
+          <GridItem>
+            <br />
+            <GridContainer>
+              <GridItem>
+                <FormControl fullWidth={true}>
+                  <TextField
+                    InputProps={{
+                      classes: {
+                        input: inputClasses,
+                        root: marginTop,
+                      },
+                    }}
+                    InputLabelProps={{
+                      className: classes.labelRoot,
+                    }}
+                    select={true}
+                    value={country}
+                    className={classes.margin}
+                    onChange={handleChange}
+                  >
+                    {selectElements}
+                  </TextField>
+                </FormControl>
+              </GridItem>
+            </GridContainer>
+          </GridItem>
+        </GridContainer>
+      </Drawer>
+    </div>
+    // <MainContainer
+    //   mapChildren={null}
+    //   // mapChildren={casesByCountry.map(country => (
+    //   //   // <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
+    //   // ))}
+    //   drawerChildren={
+    //     <div>
+    //       <Typography variant="h6" className={classes.title}>
+    //         <div>Details By Country</div>
+    //       </Typography>
+    //       <Divider />
+    //       <GridContainer className={classes.form}>
+    //         <GridItem>
+    //           <br />
+    //           <GridContainer>
+    //             <GridItem>
+    //               <FormControl fullWidth={true}>
+    //                 <TextField
+    //                   InputProps={{
+    //                     classes: {
+    //                       input: inputClasses,
+    //                       root: marginTop,
+    //                     },
+    //                   }}
+    //                   InputLabelProps={{
+    //                     className: classes.labelRoot,
+    //                   }}
+    //                   select={true}
+    //                   value={country}
+    //                   // label={'Select Country'}
+    //                   className={classes.margin}
+    //                   onChange={handleChange}
+    //                 >
+    //                   {selectElements}
+    //                 </TextField>
+    //               </FormControl>
+    //             </GridItem>
+    //           </GridContainer>
+    //         </GridItem>
+    //       </GridContainer>
+    //     </div>
+    //   }
+    // ></MainContainer>
   );
 }
 

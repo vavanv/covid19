@@ -52,7 +52,7 @@ function TotalByCountryComponent(props: Props) {
         <LeftMenu />
       </Drawer>
       <main className={classes.content}>
-        <Map center={[0, 50]} zoom={2.9}>
+        <Map center={{ lat: 0, lng: 50 }} zoom={3}>
           {casesByCountry.map(country => (
             <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
           ))}

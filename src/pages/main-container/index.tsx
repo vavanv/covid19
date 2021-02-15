@@ -17,7 +17,7 @@ const MainContainerComponent = (props: Props) => {
         <LeftMenu />
       </Drawer>
       <div className={classes.content}>
-        <Map center={[0, 50]} zoom={2.9}>
+        <Map center={{ lat: 0, lng: 50 }} zoom={2.9}>
           {mapChildren}
         </Map>
       </div>

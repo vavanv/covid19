@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
 import { MapContainer as LeafletMap, TileLayer, useMap } from 'react-leaflet';
-import { LatLngTuple } from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {
   children?: React.ReactNode;
-  center: LatLngTuple;
+  center: { lat: number; lng: number };
   zoom: number;
 }
 

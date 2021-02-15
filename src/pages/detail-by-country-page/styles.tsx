@@ -3,6 +3,12 @@ import { defaultLabelFont } from '../../assets/jss/portal-material';
 
 export const styles = ({ palette, spacing }: Theme) => {
   return createStyles({
+    root: {
+      display: 'flex',
+    },
+    content: {
+      flexGrow: 1,
+    },
     form: {
       margin: '0',
       width: '200px',
