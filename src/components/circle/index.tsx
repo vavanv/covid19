@@ -3,9 +3,13 @@ import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
+import Paper from '@material-ui/core/Paper';
+import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
+import { Animation } from '@devexpress/dx-react-chart';
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
+import { Height } from '@material-ui/icons';
 
 const getOptionsByType = (type: string) => {
   switch (type) {
@@ -33,8 +37,15 @@ const radius = (type: string, country: CasesByCountry, multiplier: number) => {
   }
 };
 
+// const data = [
+//   { type: 'Cases', number: 25802 },
+//   { type: 'Recovered', number: 21893 },
+//   { type: 'Active', number: 3683 },
+//   { type: 'Deaths', number: 226 },
+// ];
+
 interface Props extends WithStyles<typeof styles> {
-  country: CasesByCountry;
+  country: CasesByCountry | null;
   selectedType: string;
 }
 
@@ -42,13 +53,21 @@ const ShowDataByCountryComponent = (props: Props) => {
   const { classes, country, selectedType } = props;
   const options = getOptionsByType(selectedType);
   const multiplier = options?.multiplier ?? 0;
+  let data: any = [];
 
-  return (
+  if (country) {
+    data = [
+      { type: 'Cases', number: country.cases },
+      { type: 'Recovered', number: country.recovered },
+      { type: 'Active', number: country.active },
+      { type: 'Deaths', number: country.deaths },
+    ];
+  }
+  return country ? (
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
       pathOptions={options}
-      //radius={Math.sqrt(country.cases * multiplier)}
       radius={radius(selectedType, country, multiplier)}
     >
       <Popup>
@@ -61,10 +80,17 @@ const ShowDataByCountryComponent = (props: Props) => {
           <div>Population: {numeral(country.population).format('0,0')}</div>
           <div>Cases: {numeral(country.cases).format('0,0')}</div>
           <div>Recovered: {numeral(country.recovered).format('0,0')}</div>
+          <div>Active: {numeral(country.active).format('0,0')}</div>
           <div>Deaths: {numeral(country.deaths).format('0,0')}</div>
         </div>
+        <Chart data={data} height={200}>
+          <PieSeries valueField="number" argumentField="type" innerRadius={0.5} />
+          <Animation />
+        </Chart>
       </Popup>
     </Circle>
+  ) : (
+    <></>
   );
 };
 

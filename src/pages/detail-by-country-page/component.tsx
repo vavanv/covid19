@@ -10,9 +10,13 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { Drawer, LeftMenu, Map } from '../../components';
+import Paper from '@material-ui/core/Paper';
+import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
+import { Circle, Popup } from 'react-leaflet';
+
+import { Drawer, LeftMenu, Map, ShowDataByCountry } from '../../components';
 // import { MainContainer } from '../main-container';
-import { CasesByCountry } from '../../store/cases/types';
+import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {
@@ -28,12 +32,25 @@ interface Props extends WithStyles<typeof styles> {
 //   tooltip: string;
 // }
 
+const data = [
+  { country: 'Russia', area: 12 },
+  { country: 'Canada', area: 7 },
+  { country: 'USA', area: 7 },
+  { country: 'China', area: 7 },
+  { country: 'Brazil', area: 6 },
+  { country: 'Australia', area: 5 },
+  { country: 'India', area: 2 },
+  { country: 'Others', area: 55 },
+];
+
 function DetailByCountryComponent(props: Props) {
   const { classes, value, casesByCountry } = props;
 
-  const [country, setCountry] = React.useState('0');
+  // const [country, setCountry] = React.useState('0');
+  const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });
   const [mapZoom, setMapZoom] = React.useState(3);
+  // const [chartData, setChartData] = React.useState(data);
 
   const marginTop = classNames({
     [classes.marginTop]: false,
@@ -93,8 +110,8 @@ function DetailByCountryComponent(props: Props) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
-    setCountry(event.target.value);
-
+    // setCountry(event.target.value);
+    setSelectedCountry(null);
     if (event.target.value === '0') {
       setMapCenter({ lat: 0, lng: 50 });
       setMapZoom(3);
@@ -102,6 +119,7 @@ function DetailByCountryComponent(props: Props) {
     }
 
     var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
+    setSelectedCountry(selectedCountry);
     setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
     setMapZoom(5);
     // const selectedRoute: Route = routeList.filter(r => r.shapeId === event.target.value)[0];
@@ -115,9 +133,22 @@ function DetailByCountryComponent(props: Props) {
       </Drawer>
       <main className={classes.content}>
         <Map center={mapCenter} zoom={mapZoom}>
+          <ShowDataByCountry
+            country={selectedCountry}
+            selectedType={TypeOfOutput.cases}
+          ></ShowDataByCountry>
           {/* {casesByCountry.map(country => (
             <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
           ))} */}
+          {/* <Circle center={mapCenter} radius={2000000}>
+            <Popup>
+              <Paper>
+                <Chart data={chartData}>
+                  <PieSeries valueField="area" argumentField="country" />
+                </Chart>
+              </Paper>
+            </Popup>
+          </Circle> */}
         </Map>
       </main>
       <Drawer minWidth={'400px'} anchor={'right'}>
@@ -138,7 +169,7 @@ function DetailByCountryComponent(props: Props) {
               className: classes.labelRoot,
             }}
             select={true}
-            value={country}
+            value={selectedCountry === null ? '0' : selectedCountry?.countryInfo.iso3}
             className={classes.margin}
             onChange={handleChange}
           >

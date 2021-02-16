@@ -11,6 +11,7 @@ export interface CasesByCountry {
   recovered: number;
   deaths: number;
   population: number;
+  active: number;
 }
 
 export interface Info {

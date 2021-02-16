@@ -9,7 +9,7 @@ export const styles = ({ palette }: Theme) => {
       height: '80px',
       width: '100%',
       backgroundSize: 'cover',
-      borderColor: palette.primary.dark,
+      borderColor: palette.primary.light,
       borderStyle: 'solid ',
       borderWidth: 'thin',
     },
