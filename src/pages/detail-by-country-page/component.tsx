@@ -10,12 +10,7 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-// import Paper from '@material-ui/core/Paper';
-// import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
-// import { Circle, Popup } from 'react-leaflet';
-
 import { Drawer, LeftMenu, Map, ShowDataByCountry } from '../../components';
-// import { MainContainer } from '../main-container';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
@@ -25,23 +20,6 @@ interface Props extends WithStyles<typeof styles> {
   selectedType: string;
   value?: number | string;
 }
-// export interface MenuItem {
-//   id: string;
-//   icon: any;
-//   route: string;
-//   tooltip: string;
-// }
-
-// const data = [
-//   { country: 'Russia', area: 12 },
-//   { country: 'Canada', area: 7 },
-//   { country: 'USA', area: 7 },
-//   { country: 'China', area: 7 },
-//   { country: 'Brazil', area: 6 },
-//   { country: 'Australia', area: 5 },
-//   { country: 'India', area: 2 },
-//   { country: 'Others', area: 55 },
-// ];
 
 function DetailByCountryComponent(props: Props) {
   const { classes, value, casesByCountry } = props;
@@ -70,10 +48,6 @@ function DetailByCountryComponent(props: Props) {
     props.fetchCasesByCountry(null);
     // eslint-disable-next-line
   }, []);
-
-  // const casesByCountrySorted = (casesByCountry: CasesByCountry[]) => {
-  //   return R.sort(R.descend(R.prop(selectedType)), casesByCountry);
-  // };
 
   let selectElements = [];
   selectElements[0] = (
@@ -122,8 +96,6 @@ function DetailByCountryComponent(props: Props) {
     setSelectedCountry(selectedCountry);
     setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
     setMapZoom(5);
-    // const selectedRoute: Route = routeList.filter(r => r.shapeId === event.target.value)[0];
-    // dispatch(selectRoute(selectedRoute));
   };
 
   return (
@@ -137,18 +109,6 @@ function DetailByCountryComponent(props: Props) {
             country={selectedCountry}
             selectedType={TypeOfOutput.cases}
           ></ShowDataByCountry>
-          {/* {casesByCountry.map(country => (
-            <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
-          ))} */}
-          {/* <Circle center={mapCenter} radius={2000000}>
-            <Popup>
-              <Paper>
-                <Chart data={chartData}>
-                  <PieSeries valueField="area" argumentField="country" />
-                </Chart>
-              </Paper>
-            </Popup>
-          </Circle> */}
         </Map>
       </main>
       <Drawer minWidth={'400px'} anchor={'right'}>
@@ -178,49 +138,6 @@ function DetailByCountryComponent(props: Props) {
         </FormControl>
       </Drawer>
     </div>
-    // <MainContainer
-    //   mapChildren={null}
-    //   // mapChildren={casesByCountry.map(country => (
-    //   //   // <ShowDataByCountry country={country} selectedType={selectedType}></ShowDataByCountry>
-    //   // ))}
-    //   drawerChildren={
-    //     <div>
-    //       <Typography variant="h6" className={classes.title}>
-    //         <div>Details By Country</div>
-    //       </Typography>
-    //       <Divider />
-    //       <GridContainer className={classes.form}>
-    //         <GridItem>
-    //           <br />
-    //           <GridContainer>
-    //             <GridItem>
-    //               <FormControl fullWidth={true}>
-    //                 <TextField
-    //                   InputProps={{
-    //                     classes: {
-    //                       input: inputClasses,
-    //                       root: marginTop,
-    //                     },
-    //                   }}
-    //                   InputLabelProps={{
-    //                     className: classes.labelRoot,
-    //                   }}
-    //                   select={true}
-    //                   value={country}
-    //                   // label={'Select Country'}
-    //                   className={classes.margin}
-    //                   onChange={handleChange}
-    //                 >
-    //                   {selectElements}
-    //                 </TextField>
-    //               </FormControl>
-    //             </GridItem>
-    //           </GridContainer>
-    //         </GridItem>
-    //       </GridContainer>
-    //     </div>
-    //   }
-    // ></MainContainer>
   );
 }
 

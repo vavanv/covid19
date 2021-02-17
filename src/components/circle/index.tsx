@@ -2,14 +2,12 @@ import * as React from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
-
-// import Paper from '@material-ui/core/Paper';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
+
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
-// import { Height } from '@material-ui/icons';
 
 const getOptionsByType = (type: string) => {
   switch (type) {
@@ -36,13 +34,6 @@ const radius = (type: string, country: CasesByCountry, multiplier: number) => {
       return 0;
   }
 };
-
-// const data = [
-//   { type: 'Cases', number: 25802 },
-//   { type: 'Recovered', number: 21893 },
-//   { type: 'Active', number: 3683 },
-//   { type: 'Deaths', number: 226 },
-// ];
 
 interface Props extends WithStyles<typeof styles> {
   country: CasesByCountry | null;
