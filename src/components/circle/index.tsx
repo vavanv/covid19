@@ -3,13 +3,13 @@ import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
-import { Height } from '@material-ui/icons';
+// import { Height } from '@material-ui/icons';
 
 const getOptionsByType = (type: string) => {
   switch (type) {
