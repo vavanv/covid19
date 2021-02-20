@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { Drawer, LeftMenu, Map, ShowDataByCountry } from '../../components';
+import { Drawer, LeftMenu, Map, ShowDataByCountry, Flag } from '../../components';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
@@ -24,11 +24,9 @@ interface Props extends WithStyles<typeof styles> {
 function DetailByCountryComponent(props: Props) {
   const { classes, value, casesByCountry } = props;
 
-  // const [country, setCountry] = React.useState('0');
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });
   const [mapZoom, setMapZoom] = React.useState(3);
-  // const [chartData, setChartData] = React.useState(data);
 
   const marginTop = classNames({
     [classes.marginTop]: false,
@@ -64,18 +62,14 @@ function DetailByCountryComponent(props: Props) {
           className={classes.input}
         >
           <div>
-            <img
-              alt=""
-              src={country.countryInfo.flag}
-              style={{
-                height: '16px',
-                width: '28px',
-                borderBlockColor: 'black',
-                borderStyle: 'solid',
-                borderWidth: 'thin',
-              }}
-            />{' '}
-            {country.country}
+            <table>
+              <tr>
+                <td>
+                  <Flag flag={country.countryInfo.flag} />
+                </td>
+                <td>{country.country}</td>
+              </tr>
+            </table>
           </div>
         </MenuItem>
       );
@@ -84,7 +78,6 @@ function DetailByCountryComponent(props: Props) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event: any) => {
-    // setCountry(event.target.value);
     setSelectedCountry(null);
     if (event.target.value === '0') {
       setMapCenter({ lat: 0, lng: 50 });

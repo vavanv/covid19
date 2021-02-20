@@ -2,6 +2,7 @@ import * as React from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 
+import { Flag } from '../../components';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { styles } from './styles';
 
@@ -32,11 +33,7 @@ const TableComponent = (props: Props & WithStyles<typeof styles>) => {
         <tr>
           <td>
             <div>
-              <img
-                alt=""
-                src={country.countryInfo.flag}
-                style={{ height: '26px', width: '38px' }}
-              />
+              <Flag flag={country.countryInfo.flag} />
             </div>
           </td>
           <td className={classes.td_country}>

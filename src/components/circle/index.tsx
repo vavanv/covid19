@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { withStyles, WithStyles } from '@material-ui/core';
+import {
+  // Dialog,
+  // DialogActions,
+  // Button,
+  withStyles,
+  WithStyles,
+} from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
@@ -45,6 +51,14 @@ const ShowDataByCountryComponent = (props: Props) => {
   const options = getOptionsByType(selectedType);
   const multiplier = options?.multiplier ?? 0;
   let data: any = [];
+  // const [open, setOpen] = React.useState(false);
+
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   if (country) {
     data = [
@@ -55,6 +69,7 @@ const ShowDataByCountryComponent = (props: Props) => {
     ];
   }
   return country ? (
+    // <Dialog fullWidth={false} maxWidth="md" open={open} onClose={handleClose}>
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
@@ -81,6 +96,12 @@ const ShowDataByCountryComponent = (props: Props) => {
       </Popup>
     </Circle>
   ) : (
+    // <DialogActions>
+    //   <Button autoFocus onClick={handleClose} color="primary">
+    //     Save changes
+    //   </Button>
+    // </DialogActions>
+    // </Dialog>
     <></>
   );
 };
