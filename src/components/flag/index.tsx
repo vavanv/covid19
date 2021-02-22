@@ -11,7 +11,7 @@ const FlagComponent = (props: Props) => {
       alt=""
       src={flag}
       style={{
-        height: '16px',
+        height: '20px',
         width: '28px',
         borderBlockColor: 'black',
         borderStyle: 'solid',

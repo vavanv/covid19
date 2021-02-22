@@ -3,11 +3,11 @@ import { createStyles, Theme } from '@material-ui/core';
 export const styles = ({ palette }: Theme) => {
   return createStyles({
     info_container: {
-      width: '150px',
+      width: '250px',
     },
     info_flag: {
-      height: '80px',
-      width: '100%',
+      height: '120px',
+      width: '180px',
       backgroundSize: 'cover',
       borderColor: palette.primary.light,
       borderStyle: 'solid ',
