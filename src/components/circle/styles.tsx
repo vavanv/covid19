@@ -5,13 +5,13 @@ export const styles = ({ palette }: Theme) => {
     info_container: {
       width: '280px',
     },
-    info_flag: {
-      // height: '80px',
-      // width: '100%',
-      aspectRatio: '28 / 20',
-      height: 'auto',
-      width: '140px',
-      backgroundSize: 'cover',
+    flag_box: {
+      width: '100%',
+      height: '180px',
+    },
+    img: {
+      width: '100%',
+      height: '100%',
       borderColor: palette.primary.light,
       borderStyle: 'solid ',
       borderWidth: 'thin',

@@ -50,16 +50,8 @@ const ShowDataByCountryComponent = (props: Props) => {
   const { classes, country, selectedType } = props;
   const options = getOptionsByType(selectedType);
   const multiplier = options?.multiplier ?? 0;
+
   let data: any = [];
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   if (country) {
     data = [
       { type: 'Cases', number: country.cases },
@@ -68,8 +60,8 @@ const ShowDataByCountryComponent = (props: Props) => {
       { type: 'Deaths', number: country.deaths },
     ];
   }
+
   return country ? (
-    // <Dialog fullWidth={false} maxWidth="md" open={open} onClose={handleClose}>
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       fillOpacity={0.4}
@@ -78,10 +70,9 @@ const ShowDataByCountryComponent = (props: Props) => {
     >
       <Popup>
         <div className={classes.info_container}>
-          <div
-            className={classes.info_flag}
-            style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
-          />
+          <div className={classes.flag_box}>
+            <img alt="" src={country.countryInfo.flag} className={classes.img}></img>
+          </div>
           <div className={classes.info_country_name}>{country.country}</div>
           <div>Population: {numeral(country.population).format('0,0')}</div>
           <div>
@@ -95,12 +86,6 @@ const ShowDataByCountryComponent = (props: Props) => {
       </Popup>
     </Circle>
   ) : (
-    // <DialogActions>
-    //   <Button autoFocus onClick={handleClose} color="primary">
-    //     Save changes
-    //   </Button>
-    // </DialogActions>
-    // </Dialog>
     <></>
   );
 };
