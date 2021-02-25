@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
-import { Chart, PieSeries } from '@devexpress/dx-react-chart-material-ui';
+import { Chart, PieSeries, Legend } from '@devexpress/dx-react-chart-material-ui';
 import { Animation } from '@devexpress/dx-react-chart';
 
 import { cases_color, recovered_color, deaths_color } from '../../assets/jss/portal-material';
@@ -84,15 +84,14 @@ const ShowDataByCountryComponent = (props: Props) => {
           />
           <div className={classes.info_country_name}>{country.country}</div>
           <div>Population: {numeral(country.population).format('0,0')}</div>
-          <div>Cases: {numeral(country.cases).format('0,0')}</div>
-          <div>Recovered: {numeral(country.recovered).format('0,0')}</div>
-          <div>Active: {numeral(country.active).format('0,0')}</div>
-          <div>Deaths: {numeral(country.deaths).format('0,0')}</div>
+          <div>
+            <Chart data={data} height={200}>
+              <Legend></Legend>
+              <PieSeries valueField="number" argumentField="type" innerRadius={0.5} />
+              <Animation />
+            </Chart>
+          </div>
         </div>
-        <Chart data={data} height={200}>
-          <PieSeries valueField="number" argumentField="type" innerRadius={0.5} />
-          <Animation />
-        </Chart>
       </Popup>
     </Circle>
   ) : (
