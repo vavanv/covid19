@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  // Dialog,
-  // DialogActions,
-  // Button,
-  withStyles,
-  WithStyles,
-} from '@material-ui/core';
+import { withStyles, WithStyles } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 import { Chart, PieSeries, Legend } from '@devexpress/dx-react-chart-material-ui';
@@ -54,10 +48,10 @@ const ShowDataByCountryComponent = (props: Props) => {
   let data: any = [];
   if (country) {
     data = [
-      { type: 'Cases', number: country.cases },
-      { type: 'Recovered', number: country.recovered },
-      { type: 'Active', number: country.active },
-      { type: 'Deaths', number: country.deaths },
+      { type: `Cases: ${numeral(country.cases).format('0,0')}`, number: country.cases },
+      { type: `Recovered: ${numeral(country.recovered).format('0,0')}`, number: country.recovered },
+      { type: `Active: ${numeral(country.active).format('0,0')}`, number: country.active },
+      { type: `Deaths: ${numeral(country.deaths).format('0,0')}`, number: country.deaths },
     ];
   }
 
