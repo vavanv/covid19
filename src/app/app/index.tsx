@@ -6,14 +6,14 @@ import MomentUtils from '@date-io/moment';
 import { Router } from 'react-router-dom';
 
 import History from './history';
-import Store from './store';
+import store from '../../store/create-store';
 import Theme from './theme';
 import Routes from './routes';
 
 const App = () => {
   return (
     <>
-      <Provider store={Store}>
+      <Provider store={store}>
         <MuiThemeProvider theme={Theme}>
           <MuiPickersUtilsProvider utils={MomentUtils}>
             {/* CssBaseline kickstart an elegant, consistent,
