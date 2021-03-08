@@ -3,7 +3,6 @@ import 'core-js/stable';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
 
-import * as React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
 import 'typeface-roboto';
