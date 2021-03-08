@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { TotalByCountryPage } from '../../pages/total-by-country-page';
-import { DetailByCountryPage } from '../../pages/detail-by-country-page';
+import { TotalByCountry as TotalByCountryPage } from '../../pages/total-by-country-page';
+import { DetailByCountry as DetailByCountryPage } from '../../pages/detail-by-country-page';
 import { ROUTE_ROOT, COUNTRY } from '../../app/app/constants';
 
 const Routes = () => (
