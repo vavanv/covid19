@@ -4,21 +4,17 @@ LABEL version="1.0"
 LABEL description="This is the base docker image for the Covid-19 app."
 LABEL maintainer = ["vavan.v@gmail.com"]
 
+RUN mkdir /docker_image
 
-RUN mkdir /app
+WORKDIR /docker_image
 
-WORKDIR /app
-
-COPY package.json /app
-
+COPY package.json /docker_image
 
 RUN npm install
 
-
-COPY . /app
+COPY . /docker_image
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
