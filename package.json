@@ -17,7 +17,7 @@
     "@material-ui/pickers": "^3.3.10",
     "axios": "^0.21.1",
     "classnames": "2.2.6",
-    "core-js": "^3.10.1",
+    "core-js": "^3.10.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "intl": "1.2.5",
