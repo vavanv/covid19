@@ -4,7 +4,7 @@ LABEL version="1.0"
 LABEL description="This is the base docker image for the Covid-19 app."
 LABEL maintainer = ["vavan.v@gmail.com"]
 
-WORKDIR /app
+WORKDIR /src
 
 COPY ["package.json", "package-lock.json", "./"]
 
