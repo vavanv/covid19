@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
-import { Map, Drawer, LeftMenu } from '../../components';
+import { Map, Drawer, LeftMenu } from '../components';
 
 import { styles } from './styles';
 

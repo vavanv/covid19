@@ -30,7 +30,7 @@ const TableComponent = (props: Props & WithStyles<typeof styles>) => {
   return (
     <div className={classes.table}>
       {dataset.map((country: CasesByCountry) => (
-        <tr>
+        <tr key={Math.random() * 1000}>
           <td>
             <div>
               <Flag flag={country.countryInfo.flag} />

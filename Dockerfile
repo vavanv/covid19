@@ -16,5 +16,12 @@ COPY . /docker_image
 
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 3010
+CMD ["npm", "start"]
 
+# Stage 2
+
+FROM nginx:1.17.1-alpine
+
+
+COPY --from=build-step /docker_image/build /usr/share/nginx/html

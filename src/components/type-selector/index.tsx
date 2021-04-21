@@ -16,7 +16,7 @@ const TypeSelectorComponent = (props: Props & WithStyles<typeof styles>) => {
 
   return (
     <FormControl component="fieldset" className={classes.form}>
-      <RadioGroup row aria-label="position" name="position" defaultValue={type}>
+      <RadioGroup row value={type} defaultValue={TypeOfOutput.cases}>
         <FormControlLabel
           control={<RadioButton type={TypeOfOutput.cases} color={cases_color} />}
           label="Cases"
