@@ -24,7 +24,14 @@ const RadioButtonComponent = (props: Props) => {
   });
 
   return (
-    <Radio size="small" onChange={handleChange} color="default" classes={classes} value={type} />
+    <Radio
+      size="small"
+      onChange={handleChange}
+      color="default"
+      classes={classes}
+      value={type}
+      disableRipple
+    />
   );
 };
 
