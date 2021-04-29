@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TypeOfOutput } from './../../store/cases/types';
-import { CasesByCountryState } from '../../store/cases/types';
+import { CasesByCountryState, Cases } from '../../store/cases/types';
 
 export const initialState: CasesByCountryState = {
   items: [],
@@ -14,13 +14,13 @@ const casesByCountrySlice = createSlice({
     fetchCasesByCountryRequest(state) {
       state.items = [];
     },
-    fetchCasesByCountrySuccess(state, action) {
+    fetchCasesByCountrySuccess(state, action: PayloadAction<Cases>) {
       state.items = action.payload;
     },
-    fetchCasesByCountryFailure(state, action) {
+    fetchCasesByCountryFailure(state, astion) {
       state.items = [];
     },
-    changeTypeByCountry(state, action) {
+    changeTypeByCountry(state, action: PayloadAction<string>) {
       state.selectedType = action.payload;
     },
   },

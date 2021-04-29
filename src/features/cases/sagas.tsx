@@ -6,7 +6,7 @@ import { Cases } from '../../store/cases/types';
 
 export function* requestCountriesCases() {
   try {
-    const response: { value: Cases } = yield call(fetchCasesByCountry);
+    const response: Cases = yield call(fetchCasesByCountry);
     yield put(actions.fetchCasesByCountrySuccess(response));
   } catch (error) {
     yield put(actions.fetchCasesByCountryFailure(error));
