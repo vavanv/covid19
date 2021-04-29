@@ -2,7 +2,7 @@ FROM node:14.7.0
 
 LABEL version="1.0"
 LABEL description="This is the base docker image for the Covid-19 app."
-LABEL maintainer = ["vavan.v@gmail.com"]
+LABEL maintainer = ["vladimir.vorobiev@gmail.com"]
 
 RUN mkdir /docker_image
 
