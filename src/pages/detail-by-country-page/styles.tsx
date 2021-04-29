@@ -9,10 +9,6 @@ export const styles = ({ palette, spacing }: Theme) => {
     content: {
       flexGrow: 1,
     },
-    form: {
-      margin: '0',
-      width: '200px',
-    },
     marginTop: {
       marginTop: '16px',
     },
@@ -35,24 +31,6 @@ export const styles = ({ palette, spacing }: Theme) => {
     },
     margin: {
       margin: spacing(1),
-    },
-    table: {
-      marginTop: '20px',
-      marginLeft: '20px',
-      marginRight: '10px',
-      overflow: 'scroll',
-      overflowX: 'hidden',
-      height: '85%',
-      '& tr': {
-        display: 'flex',
-      },
-      '& td': {
-        padding: spacing(0.5),
-      },
-    },
-    td_country: {
-      width: '100%',
-      align: 'left',
     },
   });
 };
