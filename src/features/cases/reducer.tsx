@@ -17,7 +17,7 @@ const casesByCountrySlice = createSlice({
     fetchCasesByCountrySuccess(state, action: PayloadAction<Cases>) {
       state.items = action.payload;
     },
-    fetchCasesByCountryFailure(state, astion) {
+    fetchCasesByCountryFailure(state, action: PayloadAction<any>) {
       state.items = [];
     },
     changeTypeByCountry(state, action: PayloadAction<string>) {
