@@ -4,7 +4,9 @@ import { CasesByCountryState } from '../store/cases/types';
 export type Payload = any;
 
 export interface AppState {
-  casesByCountry: CasesByCountryState;
+  rootReducer: {
+    casesByCountry: CasesByCountryState;
+  };
 }
 
 export interface AnyAction {

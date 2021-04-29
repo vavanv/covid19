@@ -14,9 +14,9 @@ import classNames from 'classnames';
 import { AppState } from '../../store/types';
 import { Drawer, LeftMenu, Map, ShowDataByCountry, Flag } from '../../components';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
-import { fetchCasesByCountryAction } from '../../features/cases/actions';
-import { styles } from './styles';
+import { actions } from '../../features/cases/reducer';
 
+import { styles } from './styles';
 interface Props extends WithStyles<typeof styles> {
   fetchCasesByCountry: (params: any) => void;
   casesByCountry: CasesByCountry[];
@@ -28,7 +28,7 @@ function DetailByCountryComponent(props: Props) {
   const { classes, value } = props;
   const dispatch = useDispatch();
 
-  const casesByCountry = useSelector((store: AppState) => store.casesByCountry.items);
+  const casesByCountry = useSelector((store: AppState) => store.rootReducer.casesByCountry.items);
 
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });
@@ -49,8 +49,8 @@ function DetailByCountryComponent(props: Props) {
   });
 
   React.useEffect(() => {
-    var fetchCasesByCountry = fetchCasesByCountryAction.request;
-    dispatch(fetchCasesByCountry(null));
+    var fetchCasesByCountry = actions.fetchCasesByCountryRequest;
+    dispatch(fetchCasesByCountry());
   }, [dispatch]);
 
   let selectElements = [];

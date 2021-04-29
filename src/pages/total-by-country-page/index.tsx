@@ -6,8 +6,7 @@ import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
 import { AppState } from '../../store/types';
 import { ShowDataByCountry, Table, TypeSelector, Drawer, Map, LeftMenu } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
-import { fetchCasesByCountryAction } from '../../features/cases/actions';
-
+import { actions } from '../../features/cases/reducer';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {}
@@ -23,12 +22,14 @@ function TotalByCountryComponent(props: Props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const selectedType = useSelector((store: AppState) => store.casesByCountry.selectedType);
-  const casesByCountry = useSelector((store: AppState) => store.casesByCountry.items);
+  const selectedType = useSelector(
+    (store: AppState) => store.rootReducer.casesByCountry.selectedType,
+  );
+  const casesByCountry = useSelector((store: AppState) => store.rootReducer.casesByCountry.items);
 
   React.useEffect(() => {
-    var fetchCasesByCountry = fetchCasesByCountryAction.request;
-    dispatch(fetchCasesByCountry(null));
+    var fetchCasesByCountry = actions.fetchCasesByCountryRequest;
+    dispatch(fetchCasesByCountry());
   }, [dispatch]);
 
   const casesByCountrySorted = (casesByCountry: CasesByCountry[]) => {

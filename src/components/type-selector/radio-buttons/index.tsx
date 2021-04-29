@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { Radio } from '@material-ui/core/';
 
-import { changeTypeByCountryAction as changeTypeByCountry } from '../../../features/cases/actions';
+import { actions } from '../../../features/cases/reducer';
+
 import { useStyles } from './styles';
 
 interface Props {
@@ -16,7 +17,7 @@ const RadioButtonComponent = (props: Props) => {
   const dispatch = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeTypeByCountry(event.target.value));
+    dispatch(actions.changeTypeByCountry(event.target.value));
   };
 
   const classes = useStyles({
