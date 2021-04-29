@@ -28,7 +28,7 @@ function DetailByCountryComponent(props: Props) {
   const { classes, value } = props;
   const dispatch = useDispatch();
 
-  const casesByCountry = useSelector((store: AppState) => store.rootReducer.casesByCountry.items);
+  const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
 
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });

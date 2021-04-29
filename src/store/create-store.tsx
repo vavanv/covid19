@@ -8,7 +8,7 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 const reducer = {
-  rootReducer: rootReducer,
+  root: rootReducer,
 };
 
 const store = configureStore({

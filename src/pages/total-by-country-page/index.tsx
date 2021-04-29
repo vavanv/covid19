@@ -22,10 +22,8 @@ function TotalByCountryComponent(props: Props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const selectedType = useSelector(
-    (store: AppState) => store.rootReducer.casesByCountry.selectedType,
-  );
-  const casesByCountry = useSelector((store: AppState) => store.rootReducer.casesByCountry.items);
+  const selectedType = useSelector((store: AppState) => store.root.casesByCountry.selectedType);
+  const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
 
   React.useEffect(() => {
     var fetchCasesByCountry = actions.fetchCasesByCountryRequest;
