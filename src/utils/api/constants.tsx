@@ -1,5 +1,6 @@
 export const API_URLS = {
   cases_by_country: 'countries',
+  vaccine_info: 'vaccine',
 };
 
 export const ERROR_TYPES = {

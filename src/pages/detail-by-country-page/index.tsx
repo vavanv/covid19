@@ -17,15 +17,10 @@ import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { actions } from '../../features/cases/reducer';
 
 import { styles } from './styles';
-interface Props extends WithStyles<typeof styles> {
-  fetchCasesByCountry: (params: any) => void;
-  casesByCountry: CasesByCountry[];
-  selectedType: string;
-  value?: number | string;
-}
+interface Props extends WithStyles<typeof styles> {}
 
 function DetailByCountryComponent(props: Props) {
-  const { classes, value } = props;
+  const { classes } = props;
   const dispatch = useDispatch();
 
   const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
@@ -40,7 +35,6 @@ function DetailByCountryComponent(props: Props) {
 
   const inputClasses = classNames({
     [classes.input]: true,
-    [classes.inputSelect]: value === '0',
   });
 
   const inputSelect = classNames({
