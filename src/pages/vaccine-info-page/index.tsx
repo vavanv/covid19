@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   withStyles,
   WithStyles,
@@ -9,7 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { AppState } from '../../store/types';
+// import { AppState } from '../../store/types';
 import { Drawer, LeftMenu, Map } from '../../components';
 import { actions } from '../../features/vaccine-info/reducer';
 
@@ -20,7 +21,7 @@ function DetailByVaccineComponent(props: Props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
+  // const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
 
   React.useEffect(() => {
     var fetchVaccineInfo = actions.fetchVaccineInfoRequest;
