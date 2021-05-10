@@ -10,13 +10,17 @@ export const styles = ({ palette, spacing }: Theme) => {
     },
     listRoot: {
       marginLeft: '100px',
-      width: '100%',
-      maxWidth: '100%',
+      width: '60%',
+      maxWidth: '60%',
       zIndex: 1000,
       // background: 'black',
     },
     inline: {
       display: 'inline',
+    },
+    listContent: {
+      height: 'calc(100% - 2rem)',
+      overflowY: 'auto',
     },
   });
 };

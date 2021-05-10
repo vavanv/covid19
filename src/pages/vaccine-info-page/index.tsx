@@ -1,6 +1,5 @@
 import * as React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   withStyles,
   WithStyles,
@@ -8,20 +7,23 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Paper,
 } from '@material-ui/core';
 
-// import { AppState } from '../../store/types';
-import { Drawer, LeftMenu, Map } from '../../components';
+import { AppState } from '../../store/types';
+import { Drawer, LeftMenu } from '../../components';
+// import { Drawer, LeftMenu, Map } from '../../components';
 import { actions } from '../../features/vaccine-info/reducer';
 
 import { styles } from './styles';
+import { Vaccine } from '../../store/vaccine-info/types';
 interface Props extends WithStyles<typeof styles> {}
 
 function DetailByVaccineComponent(props: Props) {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  // const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
+  const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
 
   React.useEffect(() => {
     var fetchVaccineInfo = actions.fetchVaccineInfoRequest;
@@ -34,28 +36,51 @@ function DetailByVaccineComponent(props: Props) {
         <LeftMenu />
       </Drawer>
       <main className={classes.content}>
-        <Map center={{ lat: 0, lng: 50 }} zoom={3}>
-          <List className={classes.listRoot}>
-            <ListItem alignItems="flex-start">
-              <ListItemText
-                primary="Brunch this weekend?"
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      Ali Connors
-                    </Typography>
-                    {" — I'll be in your neighborhood doing errands this…"}
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
+        {/* <Map center={{ lat: 0, lng: 50 }} zoom={3}> */}
+        <Paper className={classes.listRoot}>
+          <List>
+            {vaccineInfo?.map(
+              ({ candidate, mechanism, sponsors, details, trialPhase, institutions }: Vaccine) => {
+                return (
+                  <ListItem alignItems="flex-start">
+                    <ListItemText
+                      primary={<Typography variant="h6">{`Candidate: ${candidate}`}</Typography>}
+                      secondary={
+                        <React.Fragment>
+                          <Typography
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                          >
+                            Mechanism: {mechanism}
+                          </Typography>
+                          <br />
+                          <br />
+                          <Typography variant="body2" component="span" color="textPrimary">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: details,
+                              }} // eslint-disable-line
+                            />
+                          </Typography>
+                          <br />
+                          <br />
+                          <Typography variant="body2" component="span" color="textPrimary">
+                            Trial Phase: {trialPhase}
+                          </Typography>
+                          <br />
+                          <br />
+                        </React.Fragment>
+                      }
+                    />
+                  </ListItem>
+                );
+              },
+            )}
           </List>
-        </Map>
+        </Paper>
+        {/* </Map> */}
       </main>
     </div>
   );
