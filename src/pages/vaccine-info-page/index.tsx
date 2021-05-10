@@ -46,7 +46,7 @@ function DetailByVaccineComponent(props: Props) {
                     <ListItemText
                       primary={<Typography variant="h6">{candidate}</Typography>}
                       secondary={
-                        <React.Fragment>
+                        <>
                           <Typography
                             component="span"
                             variant="body2"
@@ -56,8 +56,22 @@ function DetailByVaccineComponent(props: Props) {
                             Mechanism: {mechanism}
                           </Typography>
                           <br />
-                          <br />
                           <Typography variant="body2" component="span" color="textPrimary">
+                            Sponsors:
+                          </Typography>
+                          {sponsors.map(sponsors => {
+                            return (
+                              <>
+                                <br />
+                                <Typography variant="body2" component="span" color="textPrimary">
+                                  &nbsp;&nbsp;&nbsp;{sponsors}
+                                </Typography>
+                              </>
+                            );
+                          })}
+                          <br />
+                          <br />
+                          <Typography variant="body1" component="span" color="textPrimary">
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: details,
@@ -65,13 +79,29 @@ function DetailByVaccineComponent(props: Props) {
                             />
                           </Typography>
                           <br />
-                          <br />
                           <Typography variant="body2" component="span" color="textPrimary">
                             Trial Phase: {trialPhase}
                           </Typography>
                           <br />
+                          <Typography variant="body2" component="span" color="textPrimary">
+                            Institutions:
+                          </Typography>
+                          {institutions.map(institutions => {
+                            return (
+                              <>
+                                <Typography variant="body2" component="span" color="textPrimary">
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: institutions,
+                                    }} // eslint-disable-line
+                                  />
+                                </Typography>
+                              </>
+                            );
+                          })}
                           <br />
-                        </React.Fragment>
+                          <br />
+                        </>
                       }
                     />
                   </ListItem>

@@ -6,10 +6,12 @@ export interface Vaccine {
   trialPhase: string;
   institutions: string[];
 }
+
 export interface Phase {
   phase: string;
   candidates: string;
 }
+
 export interface VaccineInfo {
   source: string;
   totalCandidates: string;
