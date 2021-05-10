@@ -44,7 +44,7 @@ function DetailByVaccineComponent(props: Props) {
                 return (
                   <ListItem alignItems="flex-start">
                     <ListItemText
-                      primary={<Typography variant="h6">{`Candidate: ${candidate}`}</Typography>}
+                      primary={<Typography variant="h6">{candidate}</Typography>}
                       secondary={
                         <React.Fragment>
                           <Typography
