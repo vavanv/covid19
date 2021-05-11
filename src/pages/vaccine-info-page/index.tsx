@@ -89,12 +89,9 @@ function DetailByVaccineComponent(props: Props) {
                           {institutions.map(institutions => {
                             return (
                               <>
+                                <br />
                                 <Typography variant="body2" component="span" color="textPrimary">
-                                  <div
-                                    dangerouslySetInnerHTML={{
-                                      __html: institutions,
-                                    }} // eslint-disable-line
-                                  />
+                                  &nbsp;&nbsp;&nbsp;{institutions}
                                 </Typography>
                               </>
                             );
