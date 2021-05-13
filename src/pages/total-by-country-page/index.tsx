@@ -18,7 +18,7 @@ export interface MenuItem {
   tooltip: string;
 }
 
-function TotalByCountryComponent(props: Props) {
+const TotalByCountryComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
@@ -56,6 +56,6 @@ function TotalByCountryComponent(props: Props) {
       </Drawer>
     </div>
   );
-}
+};
 
 export const TotalByCountry = withStyles(styles)(TotalByCountryComponent);

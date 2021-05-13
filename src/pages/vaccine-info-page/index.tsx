@@ -19,7 +19,7 @@ import { styles } from './styles';
 import { Vaccine } from '../../store/vaccine-info/types';
 interface Props extends WithStyles<typeof styles> {}
 
-function DetailByVaccineComponent(props: Props) {
+const DetailByVaccineComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
@@ -111,6 +111,6 @@ function DetailByVaccineComponent(props: Props) {
       </main>
     </div>
   );
-}
+};
 
 export const DetailByVaccine = withStyles(styles)(DetailByVaccineComponent);

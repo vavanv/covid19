@@ -1,15 +1,11 @@
 export const API_BASE_URL = 'https://disease.sh/v3/covid-19/';
 
-export interface TAppConfig {
+export interface AppConfig {
   baseApiUrl: string;
 }
 
-function getAppConfig(): TAppConfig {
+export const getEnvConfig = (): AppConfig => {
   return {
     baseApiUrl: API_BASE_URL,
   };
-}
-
-export function getEnvConfig(): TAppConfig {
-  return getAppConfig();
-}
+};

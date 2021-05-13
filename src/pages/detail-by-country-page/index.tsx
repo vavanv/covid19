@@ -19,7 +19,7 @@ import { actions } from '../../features/cases/reducer';
 import { styles } from './styles';
 interface Props extends WithStyles<typeof styles> {}
 
-function DetailByCountryComponent(props: Props) {
+const DetailByCountryComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
