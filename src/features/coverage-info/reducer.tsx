@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CoverageInfoState, Coverage } from '../../store/coverage/types';
+import { CoverageInfoState, Coverage } from '../../store/coverage-info/types';
 
 export const initialState: CoverageInfoState = {
   items: [],

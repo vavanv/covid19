@@ -7,7 +7,7 @@ import { AppState } from '../../store/types';
 import { ShowDataByCountry, Table, TypeSelector, Drawer, Map, LeftMenu } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { actions as casesActions } from '../../features/cases/reducer';
-import { actions as coverageActions } from '../../features/coverage/reducer';
+import { actions as coverageActions } from '../../features/coverage-info/reducer';
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {}
