@@ -3,7 +3,6 @@ import { CoverageInfoState, Coverage } from '../../store/coverage-info/types';
 
 export const initialState: CoverageInfoState = {
   items: [],
-  selectedCountry: '',
 };
 
 const coverageInfoSlice = createSlice({
@@ -18,9 +17,6 @@ const coverageInfoSlice = createSlice({
     },
     fetchCasesByCountryFailure(state, action: PayloadAction<any>) {
       state.items = [];
-    },
-    changeSelectedCountry(state, action: PayloadAction<string>) {
-      state.selectedCountry = action.payload;
     },
   },
 });

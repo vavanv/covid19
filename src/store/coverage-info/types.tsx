@@ -12,5 +12,4 @@ export type Coverage = CoverageInfo[];
 
 export interface CoverageInfoState {
   items: CoverageInfo[];
-  selectedCountry: string;
 }
