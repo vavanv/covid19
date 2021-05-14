@@ -1,7 +1,7 @@
 import { call, all, takeLatest, put } from 'redux-saga/effects';
 
 import { actions } from './reducer';
-import { fetchVaccineInfo } from '../../api/vaccine-info';
+import { fetchVaccineInfo } from './api';
 import { Vaccines } from '../../store/vaccine-info/types';
 
 export function* requestVaccineInfo() {

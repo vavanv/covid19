@@ -1,7 +1,7 @@
 import { call, all, takeLatest, put } from 'redux-saga/effects';
 
 import { actions } from './reducer';
-import { fetchCoverage } from '../../api/coverage-info';
+import { fetchCoverage } from './api';
 import { Coverage } from '../../store/coverage-info/types';
 
 export function* requestCoverage() {

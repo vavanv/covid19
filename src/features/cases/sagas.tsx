@@ -1,7 +1,7 @@
 import { call, all, takeLatest, put } from 'redux-saga/effects';
 
 import { actions } from './reducer';
-import { fetchCasesByCountry } from '../../api/country-cases';
+import { fetchCasesByCountry } from './api';
 import { Cases } from '../../store/cases/types';
 
 export function* requestCountriesCases() {
