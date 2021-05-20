@@ -12,11 +12,14 @@ import {
 import classNames from 'classnames';
 
 import { AppState } from '../../store/types';
-import { Drawer, LeftMenu, Map, ShowDataByCountry, Flag } from '../../components';
-import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
-import { actions } from '../../features/coverage-info/reducer';
+import { Drawer, LeftMenu, Map, ShowVaccineCoverageByCountry, Flag } from '../../components';
+import { CasesByCountry } from '../../store/cases/types';
+import { actions as coverageActions } from '../../features/coverage-info/reducer';
+import { actions as casesActions } from '../../features/cases/reducer';
+import { DataElement } from '../../store/coverage-info/types';
 
 import { styles } from './styles';
+
 interface Props extends WithStyles<typeof styles> {}
 
 const CoverageByCountryComponent = (props: Props) => {
@@ -24,8 +27,10 @@ const CoverageByCountryComponent = (props: Props) => {
   const dispatch = useDispatch();
 
   const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
+  const coverageInfo = useSelector((store: AppState) => store.root.coverage.items);
 
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
+  const [chartData, setSelectedCoverage] = React.useState<DataElement[]>([]);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });
   const [mapZoom, setMapZoom] = React.useState(3);
 
@@ -43,8 +48,13 @@ const CoverageByCountryComponent = (props: Props) => {
   });
 
   React.useEffect(() => {
-    var fetchCasesByCountry = actions.fetchCoverageRequest;
+    var fetchCasesByCountry = casesActions.fetchCasesByCountryRequest;
     dispatch(fetchCasesByCountry());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    var fetchCoverage = coverageActions.fetchCoverageRequest;
+    dispatch(fetchCoverage());
   }, [dispatch]);
 
   let selectElements = [];
@@ -53,6 +63,7 @@ const CoverageByCountryComponent = (props: Props) => {
       {'Select Country'}
     </MenuItem>
   );
+
   selectElements = selectElements.concat(
     casesByCountry.map((country: CasesByCountry) => {
       return (
@@ -87,6 +98,30 @@ const CoverageByCountryComponent = (props: Props) => {
 
     var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
     setSelectedCountry(selectedCountry);
+    var selectedCoverage = coverageInfo.filter(v => v.country === selectedCountry.country);
+    var chartData: Array<DataElement> = new Array<DataElement>();
+
+    if (selectedCoverage.length !== 0) {
+      var array = JSON.stringify(selectedCoverage[0].timeline)
+        .split(',')
+        .map(i => i.split(':'));
+
+      array.forEach(element => {
+        var elementDate = element[0]
+          .replace('{', '')
+          .replace('}', '')
+          .replace('"', '')
+          .replace('"', '');
+        var elementNumber: number = +element[1];
+        const dataElement: DataElement = {
+          date: elementDate,
+          number: elementNumber,
+        };
+        chartData.push(dataElement);
+      });
+    }
+
+    setSelectedCoverage(chartData);
     setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
     setMapZoom(5);
   };
@@ -98,10 +133,10 @@ const CoverageByCountryComponent = (props: Props) => {
       </Drawer>
       <main className={classes.content}>
         <Map center={mapCenter} zoom={mapZoom}>
-          <ShowDataByCountry
+          <ShowVaccineCoverageByCountry
             country={selectedCountry}
-            selectedType={TypeOfOutput.cases}
-          ></ShowDataByCountry>
+            data={chartData}
+          ></ShowVaccineCoverageByCountry>
         </Map>
       </main>
       <Drawer minWidth={'400px'} anchor={'right'}>
