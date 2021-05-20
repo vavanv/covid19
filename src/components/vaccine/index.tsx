@@ -33,28 +33,26 @@ const ShowVaccineCoverageByCountryComponent = (props: Props) => {
       pathOptions={options}
       radius={Math.sqrt(country.cases * 35000)}
     >
-      <Popup>
-        <div className={classes.info_container}>
-          <div className={classes.flag_box}>
+      <Popup className={classes.info_container}>
+        {/* <div className={classes.flag_box}>
             <img alt="" src={country.countryInfo.flag} className={classes.img}></img>
-          </div>
-          <div className={classes.info_country_name}>{country.country}</div>
-          <div>Population: {numeral(country.population).format('0,0')}</div>
-          <div>
-            <Chart data={data}>
-              <ValueScale name="number" />
-              <ArgumentAxis />
-              <ValueAxis scaleName="number" showGrid={false} showLine showTicks />
-              <BarSeries
-                name="Vaccination"
-                valueField="number"
-                argumentField="date"
-                scaleName="number"
-              />
-              <Animation />
-              <Legend />
-            </Chart>
-          </div>
+          </div> */}
+        <div className={classes.info_country_name}>{country.country}</div>
+        <div>Population: {numeral(country.population).format('0,0')}</div>
+        <div>
+          <Chart data={data}>
+            <ValueScale name="number" />
+            <ArgumentAxis />
+            <ValueAxis scaleName="number" showGrid={false} showLine showTicks />
+            <BarSeries
+              name="Vaccination"
+              valueField="number"
+              argumentField="date"
+              scaleName="number"
+            />
+            <Animation />
+            <Legend />
+          </Chart>
         </div>
       </Popup>
     </Circle>
