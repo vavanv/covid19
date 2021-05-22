@@ -98,32 +98,33 @@ const CoverageByCountryComponent = (props: Props) => {
 
     var selectedCountry = casesByCountry.filter(r => r.countryInfo.iso3 === event.target.value)[0];
     setSelectedCountry(selectedCountry);
+    setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
+    setMapZoom(5);
+
     var selectedCoverage = coverageInfo.filter(v => v.country === selectedCountry.country);
     var chartData: Array<DataElement> = new Array<DataElement>();
 
-    if (selectedCoverage.length !== 0) {
-      var array = JSON.stringify(selectedCoverage[0].timeline)
-        .split(',')
-        .map(i => i.split(':'));
-
-      array.forEach(element => {
-        var elementDate = element[0]
-          .replace('{', '')
-          .replace('}', '')
-          .replace('"', '')
-          .replace('"', '');
-        var elementNumber: number = +element[1];
-        const dataElement: DataElement = {
-          date: elementDate,
-          number: elementNumber,
-        };
-        chartData.push(dataElement);
-      });
+    if (selectedCoverage.length === 0) {
+      return;
     }
+    var array = JSON.stringify(selectedCoverage[0].timeline)
+      .split(',')
+      .map(i => i.split(':'));
 
+    array.forEach(element => {
+      var elementDate = element[0]
+        .replace('"', '')
+        .replace('{', '')
+        .replace('}', '')
+        .replace('"', '');
+      var elementNumber: number = +element[1];
+      const dataElement: DataElement = {
+        date: elementDate,
+        number: elementNumber,
+      };
+      chartData.push(dataElement);
+    });
     setSelectedCoverage(chartData);
-    setMapCenter({ lat: selectedCountry.countryInfo.lat, lng: selectedCountry.countryInfo.long });
-    setMapZoom(5);
   };
 
   return (
