@@ -124,6 +124,7 @@ const CoverageByCountryComponent = (props: Props) => {
       };
       chartData.push(dataElement);
     });
+    chartData = chartData.slice(chartData.length - 8, chartData.length - 1);
     setSelectedCoverage(chartData);
   };
 

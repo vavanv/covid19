@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withStyles, WithStyles } from '@material-ui/core';
+import { withStyles, WithStyles, Paper } from '@material-ui/core';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 import {
@@ -7,9 +7,10 @@ import {
   ArgumentAxis,
   ValueAxis,
   BarSeries,
-  Legend,
+  Tooltip,
+  Title,
 } from '@devexpress/dx-react-chart-material-ui';
-import { ValueScale, Animation } from '@devexpress/dx-react-chart';
+import { EventTracker } from '@devexpress/dx-react-chart';
 
 import { cases_color } from '../../assets/jss/portal-material';
 import { CasesByCountry } from '../../store/cases/types';
@@ -25,6 +26,11 @@ interface Props extends WithStyles<typeof styles> {
 const ShowVaccineCoverageByCountryComponent = (props: Props) => {
   const { classes, country, data } = props;
   const options = { multiplier: 35000, color: cases_color, fillColor: cases_color };
+  const [targetItem, changeTargetItem] = React.useState(undefined);
+
+  const onTargetItemChange = (targetItem: any) => {
+    changeTargetItem(targetItem);
+  };
 
   return country ? (
     <Circle
@@ -37,21 +43,16 @@ const ShowVaccineCoverageByCountryComponent = (props: Props) => {
         <div className={classes.info_container}>
           <div className={classes.info_country_name}>{country.country}</div>
           <div>Population: {numeral(country.population).format('0,0')}</div>
-          <div>
+          <Paper className={classes.paper}>
             <Chart data={data}>
-              <ValueScale name="number" />
               <ArgumentAxis />
-              <ValueAxis scaleName="number" showGrid={false} showLine showTicks />
-              <BarSeries
-                name="Vaccination"
-                valueField="number"
-                argumentField="date"
-                scaleName="number"
-              />
-              <Animation />
-              <Legend />
+              <ValueAxis />
+              <BarSeries valueField="number" argumentField="date" />
+              <Title text="Vaccination progress" />
+              <EventTracker />
+              <Tooltip targetItem={targetItem} onTargetItemChange={onTargetItemChange} />
             </Chart>
-          </div>
+          </Paper>
         </div>
       </Popup>
     </Circle>

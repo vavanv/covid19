@@ -5,6 +5,9 @@ export const styles = ({ palette }: Theme) => {
     info_container: {
       width: '880px',
     },
+    paper: {
+      width: '95%',
+    },
     // flag_box: {
     //   width: '100%',
     //   height: '180px',
