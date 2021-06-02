@@ -67,11 +67,6 @@
     "not dead",
     "not op_mini all"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": ""
-    }
-  },
   "lint-staged": {
     "*.{tsx,.ts}": [
       "prettier --write",

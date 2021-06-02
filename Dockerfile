@@ -1,5 +1,5 @@
 # Prepare the app and create image
-FROM node:10-alpine as build-step
+FROM node:14 as build-step
 
 LABEL version="1.0"
 LABEL description="This is the base docker image for the Covid-19 app."
