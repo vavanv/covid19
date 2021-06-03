@@ -113,10 +113,9 @@ const CoverageByCountryComponent = (props: Props) => {
 
     array.forEach(element => {
       var elementDate = element[0]
-        .replace('"', '')
-        .replace('{', '')
-        .replace('}', '')
-        .replace('"', '');
+        .replaceAll('"', '')
+        .replaceAll('{', '')
+        .replaceAll('}', '');
       var elementNumber: number = +element[1];
       const dataElement: DataElement = {
         date: elementDate,
