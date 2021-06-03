@@ -1,3 +1,4 @@
+# Stage 1
 # Prepare the app and create image
 FROM node:14 as build-step
 
