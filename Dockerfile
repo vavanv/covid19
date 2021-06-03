@@ -32,7 +32,6 @@ CMD ["npm", "start"]
 # In Stage 2, we are using the Nginx server image to create an Nginx server
 # and deploy our app on it by copying build items from */docker_image/build*
 # folder to the Nginx server at */usr/share/nginx/html* location.
-
 FROM nginx:1.17.1-alpine
 
 
