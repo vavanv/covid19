@@ -1,4 +1,5 @@
 # Stage 1
+
 # Prepare the app and create image
 FROM node:14 as build-step
 
@@ -31,6 +32,7 @@ EXPOSE 3010
 CMD ["npm", "start"]
 
 # Stage 2
+
 # In Stage 2, we are using the Nginx server image to create an Nginx server
 # and deploy our app on it by copying build items from */docker_image/build*
 # folder to the Nginx server at */usr/share/nginx/html* location.
