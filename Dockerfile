@@ -24,8 +24,10 @@ COPY . /docker_image
 # Obvious
 RUN npm run build
 
-# Expose port 3010 on the container and start the application:
+# Expose port 3010 on the container:
 EXPOSE 3010
+
+# How to start the application
 CMD ["npm", "start"]
 
 # Stage 2
@@ -33,6 +35,5 @@ CMD ["npm", "start"]
 # and deploy our app on it by copying build items from */docker_image/build*
 # folder to the Nginx server at */usr/share/nginx/html* location.
 FROM nginx:1.17.1-alpine
-
 
 COPY --from=build-step /docker_image/build /usr/share/nginx/html
