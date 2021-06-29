@@ -4,8 +4,7 @@ import { getEnvConfig } from '../../utils/api/config';
 import { getUrlWithSlash, getPathWithoutSlash } from '../../utils/url/index';
 
 import { API_CONSTANTS } from '../../utils/api/constants';
-import { HttpError } from '../../utils/api/httpError';
-import { TimeoutError } from '../../utils/api/timeoutError';
+import { HttpError, TimeoutError } from './errors';
 
 export type Credentials = 'omit' | 'same-origin' | 'include';
 
@@ -17,8 +16,6 @@ export interface FetchParams {
   headers?: any;
   method?: string;
   path: string;
-  token?: string;
-  authCredentials?: string;
   timeout?: number;
 }
 
@@ -30,11 +27,7 @@ export async function fetchHandler({
   headers,
   method = 'GET',
   path,
-  token,
-  authCredentials,
 }: FetchParams): Promise<void> {
-  const auth = authCredentials ? { Authorization: authCredentials } : {};
-  const authHeaders = token ? { Authorization: token } : auth;
   const defaultHeaders = {
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
@@ -45,7 +38,7 @@ export async function fetchHandler({
   };
 
   const config = {
-    headers: { ...defaultHeaders, ...authHeaders, ...headers },
+    headers: { ...defaultHeaders, ...headers },
     body: JSON.stringify(body),
     method,
     credentials,

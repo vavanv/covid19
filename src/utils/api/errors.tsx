@@ -1,4 +1,11 @@
-import { ERROR_TYPES } from '../../utils/api/constants';
+import { ERROR_TYPES } from './constants';
+
+export class TimeoutError extends Error {
+  public constructor(statusText?: string) {
+    super(statusText || 'Timeout Error');
+    this.name = ERROR_TYPES.TimeoutError;
+  }
+}
 
 export class HttpError extends Error {
   private status: number;
