@@ -16,7 +16,7 @@ interface Props extends WithStyles<typeof styles> {
   items: MenuItem[];
 }
 
-const LeftMenuComponent = (props: Props & WithStyles<typeof styles>) => {
+const MenuItemsComponent = (props: Props & WithStyles<typeof styles>) => {
   const { classes, items } = props;
 
   return (
@@ -34,4 +34,4 @@ const LeftMenuComponent = (props: Props & WithStyles<typeof styles>) => {
   );
 };
 
-export const LeftMenu = React.memo(withStyles(styles)(LeftMenuComponent));
+export const MenuItems = React.memo(withStyles(styles)(MenuItemsComponent));

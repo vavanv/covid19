@@ -8,8 +8,8 @@ import {
 
 import { ROUTE_ROOT, COUNTRY, VACCINATION, VACCINE_INFORMATION } from './../../app/app/constants';
 
-import { Drawer, LeftMenu } from './../../components';
-import { MenuItem } from './../../components/left-menu/index';
+import { Drawer, MenuItems } from './../../components';
+import { MenuItem } from '../../components/menu-items/index';
 
 const items: MenuItem[] = [
   {
@@ -41,7 +41,7 @@ const items: MenuItem[] = [
 const MenuComponent = () => {
   return (
     <Drawer minWidth={'20px'} anchor={'left'}>
-      <LeftMenu items={items} />
+      <MenuItems items={items} />
     </Drawer>
   );
 };
