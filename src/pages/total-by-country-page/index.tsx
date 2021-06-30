@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
 
 import { AppState } from '../../store/types';
-import { ShowDataByCountry, Table, TypeSelector, Drawer, Map, LeftMenu } from '../../components';
+import { ShowDataByCountry, Table, TypeSelector, Drawer, Map } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { actions } from '../../features/cases/reducer';
+import { Menu } from './../../features/menu';
+
 import { styles } from './styles';
 
 interface Props extends WithStyles<typeof styles> {}
@@ -36,9 +38,7 @@ const TotalByCountryComponent = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Drawer minWidth={'20px'} anchor={'left'}>
-        <LeftMenu />
-      </Drawer>
+      <Menu />
       <main className={classes.content}>
         <Map center={{ lat: 0, lng: 50 }} zoom={3}>
           {casesByCountry.map(country => (

@@ -12,11 +12,12 @@ import {
 import classNames from 'classnames';
 
 import { AppState } from '../../store/types';
-import { Drawer, LeftMenu, Map, ShowVaccineCoverageByCountry, Flag } from '../../components';
+import { Drawer, Map, ShowVaccineCoverageByCountry, Flag } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { actions as coverageActions } from '../../features/coverage-info/reducer';
 import { actions as casesActions } from '../../features/cases/reducer';
 import { DataElement } from '../../store/coverage-info/types';
+import { Menu } from './../../features/menu';
 
 import { styles } from './styles';
 
@@ -129,9 +130,7 @@ const CoverageByCountryComponent = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Drawer minWidth={'20px'} anchor={'left'}>
-        <LeftMenu />
-      </Drawer>
+      <Menu />
       <main className={classes.content}>
         <Map center={mapCenter} zoom={mapZoom}>
           <ShowVaccineCoverageByCountry

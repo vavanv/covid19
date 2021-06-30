@@ -11,12 +11,12 @@ import {
 } from '@material-ui/core';
 
 import { AppState } from '../../store/types';
-import { Drawer, LeftMenu } from '../../components';
-// import { Drawer, LeftMenu, Map } from '../../components';
 import { actions } from '../../features/vaccine-info/reducer';
+import { Vaccine } from '../../store/vaccine-info/types';
+import { Menu } from './../../features/menu';
 
 import { styles } from './styles';
-import { Vaccine } from '../../store/vaccine-info/types';
+
 interface Props extends WithStyles<typeof styles> {}
 
 const DetailByVaccineComponent = (props: Props) => {
@@ -32,11 +32,8 @@ const DetailByVaccineComponent = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Drawer minWidth={'20px'} anchor={'left'}>
-        <LeftMenu />
-      </Drawer>
+      <Menu />
       <main className={classes.content}>
-        {/* <Map center={{ lat: 0, lng: 50 }} zoom={3}> */}
         <Paper className={classes.listRoot}>
           <List>
             {vaccineInfo?.map(

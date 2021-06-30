@@ -12,11 +12,13 @@ import {
 import classNames from 'classnames';
 
 import { AppState } from '../../store/types';
-import { Drawer, LeftMenu, Map, ShowDataByCountry, Flag } from '../../components';
+import { Drawer, Map, ShowDataByCountry, Flag } from '../../components';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { actions } from '../../features/cases/reducer';
+import { Menu } from './../../features/menu';
 
 import { styles } from './styles';
+
 interface Props extends WithStyles<typeof styles> {}
 
 const DetailByCountryComponent = (props: Props) => {
@@ -93,9 +95,7 @@ const DetailByCountryComponent = (props: Props) => {
 
   return (
     <div className={classes.root}>
-      <Drawer minWidth={'20px'} anchor={'left'}>
-        <LeftMenu />
-      </Drawer>
+      <Menu />
       <main className={classes.content}>
         <Map center={mapCenter} zoom={mapZoom}>
           <ShowDataByCountry
@@ -132,6 +132,6 @@ const DetailByCountryComponent = (props: Props) => {
       </Drawer>
     </div>
   );
-}
+};
 
 export const DetailByCountry = withStyles(styles)(DetailByCountryComponent);

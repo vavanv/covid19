@@ -55,32 +55,32 @@ const ShowDataByCountryComponent = (props: Props) => {
     ];
   }
 
-  return country ? (
-    <Circle
-      center={[country.countryInfo.lat, country.countryInfo.long]}
-      fillOpacity={0.4}
-      pathOptions={options}
-      radius={radius(selectedType, country, multiplier)}
-    >
-      <Popup>
-        <div className={classes.info_container}>
-          <div className={classes.flag_box}>
-            <img alt="" src={country.countryInfo.flag} className={classes.img}></img>
+  return (
+    country && (
+      <Circle
+        center={[country.countryInfo.lat, country.countryInfo.long]}
+        fillOpacity={0.4}
+        pathOptions={options}
+        radius={radius(selectedType, country, multiplier)}
+      >
+        <Popup>
+          <div className={classes.info_container}>
+            <div className={classes.flag_box}>
+              <img alt="" src={country.countryInfo.flag} className={classes.img}></img>
+            </div>
+            <div className={classes.info_country_name}>{country.country}</div>
+            <div>Population: {numeral(country.population).format('0,0')}</div>
+            <div>
+              <Chart data={data} height={200}>
+                <Legend></Legend>
+                <PieSeries valueField="number" argumentField="type" innerRadius={0.5} />
+                <Animation />
+              </Chart>
+            </div>
           </div>
-          <div className={classes.info_country_name}>{country.country}</div>
-          <div>Population: {numeral(country.population).format('0,0')}</div>
-          <div>
-            <Chart data={data} height={200}>
-              <Legend></Legend>
-              <PieSeries valueField="number" argumentField="type" innerRadius={0.5} />
-              <Animation />
-            </Chart>
-          </div>
-        </div>
-      </Popup>
-    </Circle>
-  ) : (
-    <></>
+        </Popup>
+      </Circle>
+    )
   );
 };
 
