@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-import { getEnvConfig } from '../../utils/api/config';
-import { getUrlWithSlash, getPathWithoutSlash } from '../../utils/url/index';
+import { getEnvConfig } from '../utils/api/config';
+import { getUrlWithSlash, getPathWithoutSlash } from '../utils/url/index';
 
-import { API_CONSTANTS } from '../../utils/api/constants';
-import { HttpError, TimeoutError } from './errors';
+import { API_CONSTANTS } from '../utils/api/constants';
+import { HttpError, TimeoutError } from '../utils/api/errors';
 
 export type Credentials = 'omit' | 'same-origin' | 'include';
 

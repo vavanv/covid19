@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import 'typeface-roboto';
 
-import App from '../src/app/app/index';
+import App from '../src/app/index';
 import reportWebVitals from './reportWebVitals';
 
 // import * as serviceWorker from './serviceWorker';

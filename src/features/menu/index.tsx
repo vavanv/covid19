@@ -6,7 +6,7 @@ import {
   Language as WorldIcon,
 } from '@material-ui/icons';
 
-import { ROUTE_ROOT, COUNTRY, VACCINATION, VACCINE_INFORMATION } from './../../app/app/constants';
+import { ROUTE_ROOT, COUNTRY, VACCINATION, VACCINE_INFORMATION } from './../../app/constants';
 
 import { Drawer, MenuItems } from './../../components';
 import { MenuItem } from '../../components/menu-items/index';

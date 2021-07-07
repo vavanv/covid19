@@ -1,4 +1,4 @@
-import { fetchHandler } from '../../utils/api/request';
+import { fetchHandler } from '../../app/request';
 import { API_URLS } from '../../utils/api/constants';
 
 export const fetchVaccineInfo = (): Promise<void> => {
