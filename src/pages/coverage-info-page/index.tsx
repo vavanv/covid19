@@ -49,13 +49,11 @@ const CoverageByCountryComponent = (props: Props) => {
   });
 
   React.useEffect(() => {
-    var fetchCasesByCountry = casesActions.fetchCasesByCountryRequest;
-    dispatch(fetchCasesByCountry());
+    dispatch(casesActions.fetchCasesByCountryRequest());
   }, [dispatch]);
 
   React.useEffect(() => {
-    var fetchCoverage = coverageActions.fetchCoverageRequest;
-    dispatch(fetchCoverage());
+    dispatch(coverageActions.fetchCoverageRequest());
   }, [dispatch]);
 
   let selectElements = [];

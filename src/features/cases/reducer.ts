@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TypeOfOutput } from './../../store/cases/types';
+import { TypeOfOutput } from '../../store/cases/types';
 import { CasesByCountryState, Cases } from '../../store/cases/types';
 
 export const initialState: CasesByCountryState = {

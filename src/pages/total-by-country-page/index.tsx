@@ -28,8 +28,7 @@ const TotalByCountryComponent = (props: Props) => {
   const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
 
   React.useEffect(() => {
-    var fetchCasesByCountry = actions.fetchCasesByCountryRequest;
-    dispatch(fetchCasesByCountry());
+    dispatch(actions.fetchCasesByCountryRequest());
   }, [dispatch]);
 
   const casesByCountrySorted = (casesByCountry: CasesByCountry[]) => {

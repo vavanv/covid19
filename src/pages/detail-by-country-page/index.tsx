@@ -45,8 +45,7 @@ const DetailByCountryComponent = (props: Props) => {
   });
 
   React.useEffect(() => {
-    var fetchCasesByCountry = actions.fetchCasesByCountryRequest;
-    dispatch(fetchCasesByCountry());
+    dispatch(actions.fetchCasesByCountryRequest());
   }, [dispatch]);
 
   let selectElements = [];

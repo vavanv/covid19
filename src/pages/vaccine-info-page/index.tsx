@@ -26,8 +26,7 @@ const DetailByVaccineComponent = (props: Props) => {
   const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
 
   React.useEffect(() => {
-    var fetchVaccineInfo = actions.fetchVaccineInfoRequest;
-    dispatch(fetchVaccineInfo());
+    dispatch(actions.fetchVaccineInfoRequest());
   }, [dispatch]);
 
   return (
