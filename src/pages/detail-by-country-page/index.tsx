@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { AppState } from '../../store/types';
+import { AppState } from '../../store/app-state';
 import { Drawer, Map, ShowDataByCountry, Flag } from '../../components';
 import { CasesByCountry, TypeOfOutput } from '../../store/cases/types';
 import { actions } from '../../features/cases/reducer';
@@ -25,7 +25,7 @@ const DetailByCountryComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
+  const casesByCountry = useSelector((store: AppState) => store.casesByCountry.items);
 
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [mapCenter, setMapCenter] = React.useState({ lat: 0, lng: 50 });

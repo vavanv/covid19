@@ -10,7 +10,7 @@ import {
   Paper,
 } from '@material-ui/core';
 
-import { AppState } from '../../store/types';
+import { AppState } from '../../store/app-state';
 import { actions } from '../../features/vaccine-info/reducer';
 import { Vaccine } from '../../store/vaccine-info/types';
 import { Menu } from './../../features/menu';
@@ -23,7 +23,7 @@ const DetailByVaccineComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const vaccineInfo = useSelector((store: AppState) => store.root.vaccineInfo.items?.data);
+  const vaccineInfo = useSelector((store: AppState) => store.vaccineInfo.items?.data);
 
   React.useEffect(() => {
     dispatch(actions.fetchVaccineInfoRequest());

@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 
-import { AppState } from '../../store/types';
+import { AppState } from '../../store/app-state';
 import { Drawer, Map, ShowVaccineCoverageByCountry, Flag } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { actions as coverageActions } from '../../features/coverage-info/reducer';
@@ -27,8 +27,8 @@ const CoverageByCountryComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
-  const coverageInfo = useSelector((store: AppState) => store.root.coverage.items);
+  const casesByCountry = useSelector((store: AppState) => store.casesByCountry.items);
+  const coverageInfo = useSelector((store: AppState) => store.coverage.items);
 
   const [selectedCountry, setSelectedCountry] = React.useState<CasesByCountry | null>(null);
   const [chartData, setSelectedCoverage] = React.useState<DataElement[]>([]);

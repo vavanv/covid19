@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Divider, withStyles, WithStyles } from '@material-ui/core';
 
-import { AppState } from '../../store/types';
+import { AppState } from '../../store/app-state';
 import { ShowDataByCountry, Table, TypeSelector, Drawer, Map } from '../../components';
 import { CasesByCountry } from '../../store/cases/types';
 import { actions } from '../../features/cases/reducer';
@@ -24,8 +24,8 @@ const TotalByCountryComponent = (props: Props) => {
   const { classes } = props;
   const dispatch = useDispatch();
 
-  const selectedType = useSelector((store: AppState) => store.root.casesByCountry.selectedType);
-  const casesByCountry = useSelector((store: AppState) => store.root.casesByCountry.items);
+  const selectedType = useSelector((store: AppState) => store.casesByCountry.selectedType);
+  const casesByCountry = useSelector((store: AppState) => store.casesByCountry.items);
 
   React.useEffect(() => {
     dispatch(actions.fetchCasesByCountryRequest());
